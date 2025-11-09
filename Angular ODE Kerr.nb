@@ -1,0 +1,912 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     32814,        902]
+NotebookOptionsPosition[     27721,        814]
+NotebookOutlinePosition[     28153,        831]
+CellTagsIndexPosition[     28110,        828]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Frobenius Method application", "Chapter",
+ CellChangeTimes->{{3.971690697582615*^9, 
+  3.9716907165239267`*^9}},ExpressionUUID->"84efa53c-4cbd-4111-b003-\
+f55855088a25"],
+
+Cell[CellGroupData[{
+
+Cell["Angular ODE in subextremal Kerr", "Section",
+ CellChangeTimes->{{3.971690722416433*^9, 
+  3.9716907318251867`*^9}},ExpressionUUID->"30d73514-471f-46a3-923e-\
+52683421eec9"],
+
+Cell["\<\
+In Kerr, after separation of variables for Teukolsky equation, we obtain the \
+following ODE for the angular component\
+\>", "Text",
+ CellChangeTimes->{{3.9716907635497875`*^9, 3.9716908560251555`*^9}, {
+   3.9716909405554056`*^9, 3.9716909834064837`*^9}, 
+   3.97169101962875*^9},ExpressionUUID->"a5aff03f-6e38-4705-b416-\
+30aacf90d23c"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  TemplateBox[<|"boxes" -> FormBox[
+      RowBox[{
+        FractionBox[
+         RowBox[{
+           SuperscriptBox[
+            StyleBox["d", "TI"], "2"], 
+           StyleBox["S", "TI"], 
+           RowBox[{"(", 
+             StyleBox["x", "TI"], ")"}]}], 
+         RowBox[{
+           StyleBox["d", "TI"], 
+           SuperscriptBox[
+            StyleBox["x", "TI"], "2"]}]], "+", 
+        SubscriptBox[
+         StyleBox["f", "TI"], "1"], 
+        RowBox[{"(", 
+          StyleBox["x", "TI"], ")"}], 
+        FractionBox[
+         RowBox[{
+           StyleBox["d", "TI"], 
+           StyleBox["S", "TI"], 
+           RowBox[{"(", 
+             StyleBox["x", "TI"], ")"}]}], 
+         RowBox[{
+           StyleBox["d", "TI"], 
+           StyleBox["x", "TI"]}]], "+", 
+        SubscriptBox[
+         StyleBox["f", "TI"], "2"], 
+        RowBox[{"(", 
+          StyleBox["x", "TI"], ")"}], 
+        StyleBox["S", "TI"], 
+        RowBox[{"(", 
+          StyleBox["x", "TI"], ")"}], "\[LongEqual]", "0"}], TraditionalForm],
+     "errors" -> {}, "input" -> 
+    "{\\dfrac{d^2S(x)}{dx^2}}+f_1(x){\\dfrac{dS(x)}{dx}}+f_2(x)S(x)=0", 
+    "state" -> "Boxes"|>,
+   "TeXAssistantTemplate"], 
+  TraditionalForm]],ExpressionUUID->"8a80cace-ad4d-4b04-a6b5-54631158626c"]], \
+"Text",
+ CellChangeTimes->{3.971691000249938*^9},
+ TextAlignment->Center,
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"e9291554-6351-4d37-901e-3db464e016b5"],
+
+Cell["\<\
+where I am using the variable \
+\[OpenCurlyDoubleQuote]x\[CloseCurlyDoubleQuote] in place of \
+\[OpenCurlyDoubleQuote]\\theta\[CloseCurlyDoubleQuote] to be coherent with \
+the code. The coefficients are defined as follows.\
+\>", "Text",
+ CellChangeTimes->{{3.971691030881968*^9, 
+  3.9716910645147867`*^9}},ExpressionUUID->"c0cf5280-a314-45bb-b2c0-\
+baae106588d9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f1", "[", "x_", "]"}], ":=", 
+   RowBox[{"Cot", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f2", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"-", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"m", "+", 
+         RowBox[{"s", "*", 
+          RowBox[{"Cos", "[", "x", "]"}]}]}], ")"}], "2"]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"Sin", "[", "x", "]"}], ")"}], "2"]], "+", 
+    RowBox[{
+     SuperscriptBox["v", "2"], "*", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"Cos", "[", "x", "]"}], ")"}], "2"]}], "-", 
+    RowBox[{"2", "*", "v", "*", "s", "*", 
+     RowBox[{"Cos", "[", "x", "]"}]}], "+", "L"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.971689932153806*^9, 3.9716899635177326`*^9}, {
+  3.971690022934559*^9, 3.9716900291690483`*^9}, {3.9716900855743475`*^9, 
+  3.9716901181339874`*^9}, {3.9716903433602653`*^9, 3.9716904419536724`*^9}, {
+  3.9716904852305317`*^9, 3.971690515473447*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[1]:=",ExpressionUUID->"f3d36585-a536-440d-8784-f1013c8e1b0c"],
+
+Cell["\<\
+The point x=0 is a regular singular point, so we can apply Frobenius Method \
+around it to obtain a series expansion for the solution. In particular, we \
+need to:
+1. Deduce and solve the indicial equation;
+2. Implement the recursive algorithm to obtain all coefficients of the series \
+expansion. \
+\>", "Text",
+ CellChangeTimes->{{3.97169107054681*^9, 3.971691149861624*^9}, {
+  3.9716912313144193`*^9, 3.971691258477522*^9}, {3.97169149819796*^9, 
+  3.971691745958456*^9}},ExpressionUUID->"f259ef4a-fb53-4827-9fe9-\
+4a9af49848de"],
+
+Cell[CellGroupData[{
+
+Cell["Indicial equation", "Subsection",
+ CellChangeTimes->{{3.971691753741599*^9, 
+  3.971691755254595*^9}},ExpressionUUID->"8a9f7ef3-16a2-4db3-a4d2-\
+24c8053122d7"],
+
+Cell["The indicial equation reads as", "Text",
+ CellChangeTimes->{{3.9716920037717404`*^9, 
+  3.9716920086324778`*^9}},ExpressionUUID->"a0a0578a-584f-4740-8851-\
+05e7bca062df"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  TemplateBox[<|"boxes" -> FormBox[
+      RowBox[{"\[Alpha]", 
+        RowBox[{"(", 
+          RowBox[{"\[Alpha]", "-", "1"}], ")"}], "+", 
+        SubscriptBox[
+         StyleBox["f", "TI"], 
+         RowBox[{"0", ",", "1"}]], "\[Alpha]", "+", 
+        SubscriptBox[
+         StyleBox["f", "TI"], 
+         RowBox[{"2", ",", "0"}]], "\[LongEqual]", "0"}], TraditionalForm], 
+    "errors" -> {}, "input" -> 
+    "\\alpha(\\alpha-1)+{f_{0,1}}\\alpha+{f_{2,0}}=0", "state" -> "Boxes"|>,
+   "TeXAssistantTemplate"], 
+  TraditionalForm]],ExpressionUUID->"36d8f8ed-7517-4852-a352-735c8dd35b46"]], \
+"Text",
+ CellChangeTimes->{3.9716920144150305`*^9},
+ TextAlignment->Center,
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"bbd82fc1-5270-4f95-b5be-dafc6a64f42d"],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], 
+        RowBox[{"0", ",", "1"}]], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_{0,1}", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "8b803ade-cc03-40b7-8ec2-c549c04b8050"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], 
+        RowBox[{"0", ",", "2"}]], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_{0,2}", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "efaae997-aacd-427a-bafb-3fbeaf670ec2"],
+ " are the top order coefficients of the Taylor series expansions of ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "1"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_1", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "7e805889-eb2b-4b02-966b-7f23fd7db395"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "2"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_2", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "f3a5de36-efea-4a93-9542-60741367f5dc"],
+ ". We compute them as follows:"
+}], "Text",
+ CellChangeTimes->{{3.971692065975224*^9, 
+  3.971692123499567*^9}},ExpressionUUID->"8d809cb4-b6d9-4f35-a8e8-\
+3551cf8585b7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Series", "[", 
+  RowBox[{
+   RowBox[{"x", " ", 
+    RowBox[{"f1", "[", "x", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "5"}], "}"}]}], "]"}], "\n", 
+ RowBox[{"Series", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], " ", 
+    RowBox[{"f2", "[", "x", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "4"}], "}"}]}], "]"}], "\n"}], "Input",
+ CellChangeTimes->{{3.9716906568613844`*^9, 3.971690669126479*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[3]:=",ExpressionUUID->"6230befc-d800-449c-a1f5-ee7b62687912"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1", "-", 
+   FractionBox[
+    SuperscriptBox["x", "2"], "3"], "-", 
+   FractionBox[
+    SuperscriptBox["x", "4"], "45"], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "6"],
+    SeriesData[$CellContext`x, 0, {}, 0, 6, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {1, 0, 
+    Rational[-1, 3], 0, 
+    Rational[-1, 45]}, 0, 6, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.9716906744696207`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"60c365c9-63a5-423a-a2bf-2ec1b4e229ab"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"m", "+", "s"}], ")"}], "2"]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"L", "+", 
+      RowBox[{"s", " ", 
+       RowBox[{"(", 
+        RowBox[{"m", "+", "s"}], ")"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "3"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "s"}], ")"}], "2"]}], "-", 
+      RowBox[{"2", " ", "s", " ", "v"}], "+", 
+      SuperscriptBox["v", "2"]}], ")"}], " ", 
+    SuperscriptBox["x", "2"]}], "+", 
+   RowBox[{
+    FractionBox["1", "60"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "4"}], " ", 
+       SuperscriptBox["m", "2"]}], "+", 
+      RowBox[{"7", " ", "m", " ", "s"}], "-", 
+      RowBox[{"4", " ", 
+       SuperscriptBox["s", "2"]}], "+", 
+      RowBox[{"60", " ", "s", " ", "v"}], "-", 
+      RowBox[{"60", " ", 
+       SuperscriptBox["v", "2"]}]}], ")"}], " ", 
+    SuperscriptBox["x", "4"]}], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "5"],
+    SeriesData[$CellContext`x, 0, {}, 0, 5, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 
+   0, {-($CellContext`m + $CellContext`s)^2, 
+    0, $CellContext`L + $CellContext`s ($CellContext`m + $CellContext`s) + 
+    Rational[-1, 3] ($CellContext`m + $CellContext`s)^2 - 
+    2 $CellContext`s $CellContext`v + $CellContext`v^2, 0, 
+    Rational[1, 60] ((-4) $CellContext`m^2 + 7 $CellContext`m $CellContext`s - 
+     4 $CellContext`s^2 + 60 $CellContext`s $CellContext`v - 
+     60 $CellContext`v^2)}, 0, 5, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.971690674485194*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"5e585586-b97a-4a1d-b311-b8c1e541a46a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"f10", "=", 
+  RowBox[{"SeriesCoefficient", "[", 
+   RowBox[{
+    RowBox[{"x", " ", 
+     RowBox[{"f1", "[", "x", "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "0"}], "}"}]}], "]"}]}], "\n", 
+ RowBox[{"f20", "=", 
+  RowBox[{"SeriesCoefficient", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "^", "2"}], " ", 
+     RowBox[{"f2", "[", "x", "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "0"}], "}"}]}], "]"}]}], "\n"}], "Input",
+ CellChangeTimes->{{3.9716922288488936`*^9, 3.971692260380912*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[5]:=",ExpressionUUID->"81292d92-4fd5-457e-bf10-6b932e166186"],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.9716923319265194`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"4fab1866-c0a4-4f9e-9198-9a56d02938df"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"m", "+", "s"}], ")"}], "2"]}]], "Output",
+ CellChangeTimes->{3.9716923319265194`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"7f0eae06-28a7-489a-8b9b-becb57b05bf6"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Then, the indicial equation is ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       RowBox[{
+         StyleBox["Q", "TI"], 
+         RowBox[{"(", "\[Alpha]", ")"}], "\[LongEqual]", "0"}], 
+       TraditionalForm], "errors" -> {}, "input" -> "Q(\\alpha)=0", "state" -> 
+     "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "4bc9023d-3d32-4cd5-a162-bff59892bfa0"],
+ " with "
+}], "Text",
+ CellChangeTimes->{{3.971692433332573*^9, 3.9716924470531025`*^9}, {
+  3.9716924894336853`*^9, 
+  3.9716924999051147`*^9}},ExpressionUUID->"2d9de995-1702-4019-91f5-\
+f8185974a688"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Q", "[", "a_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"a", "*", 
+     RowBox[{"(", 
+      RowBox[{"a", "-", "1"}], ")"}]}], "+", 
+    RowBox[{"f10", "*", "a"}], "+", "f20"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.9716925042811437`*^9, 3.9716925415374527`*^9}, {
+  3.9716926118964505`*^9, 3.9716926121153502`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[8]:=",ExpressionUUID->"f561d2ee-bd9c-4438-853a-67268ca94ea9"],
+
+Cell["and its solutions are", "Text",
+ CellChangeTimes->{{3.9716926487000666`*^9, 
+  3.971692650966118*^9}},ExpressionUUID->"2576ba82-ac0d-4303-8ef1-\
+f3bf3369eed1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Q", "[", "a", "]"}], "==", "0"}], ",", "a"}], "]"}], 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.9716926544046783`*^9, 3.9716926578429103`*^9}, 
+   3.971692710837775*^9},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[9]:=",ExpressionUUID->"d9b7dd37-6abc-49ee-aad8-b6a9ba5baf6d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "m"}], "-", "s"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", "\[Rule]", 
+     RowBox[{"m", "+", "s"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.97169271288142*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"4c680c24-6634-40d2-9691-b247a0b4fca5"]
+}, Open  ]],
+
+Cell["\<\
+The application of Frobenius method is more complicated if the two solutions \
+to the indicial equal differ by an integer. In this case, both roots are \
+integer, hence so is their difference. This means that we need to be more \
+careful. In particular, since the recursive relation that allows us to \
+determine coefficient is\
+\>", "Text",
+ CellChangeTimes->{{3.971692787699896*^9, 3.9716928271600018`*^9}, {
+  3.9716930502510133`*^9, 3.9716930849596877`*^9}, {3.971693307187395*^9, 
+  3.9716933234069986`*^9}, {3.97169344712719*^9, 3.9716934597051105`*^9}, {
+  3.9716950927917995`*^9, 3.971695112749957*^9}, {3.9716955542375865`*^9, 
+  3.971695574959752*^9}},ExpressionUUID->"bb107b29-0cf1-4ee7-90b2-\
+c5c547ce2258"],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  TemplateBox[<|"boxes" -> FormBox[
+      RowBox[{
+        StyleBox["Q", "TI"], 
+        RowBox[{"(", 
+          RowBox[{
+            StyleBox["a", "TI"], "+", 
+            StyleBox["n", "TI"]}], ")"}], 
+        SubscriptBox[
+         StyleBox["A", "TI"], 
+         StyleBox["n", "TI"]], "\[LongEqual]", "-", 
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{
+           StyleBox["j", "TI"], "\[LongEqual]", "0"}], 
+         RowBox[{
+           StyleBox["n", "TI"], "-", "1"}], LimitsPositioning -> False], 
+        RowBox[{"[", 
+          RowBox[{
+            RowBox[{"(", 
+              RowBox[{
+                StyleBox["a", "TI"], "+", 
+                StyleBox["j", "TI"]}], ")"}], 
+            SubscriptBox[
+             StyleBox["f", "TI"], 
+             RowBox[{"1", ",", 
+               StyleBox["n", "TI"], "-", 
+               StyleBox["j", "TI"]}]], "+", 
+            SubscriptBox[
+             StyleBox["g", "TI"], 
+             RowBox[{
+               StyleBox["n", "TI"], "-", 
+               StyleBox["j", "TI"]}]]}], "]"}], 
+        SubscriptBox[
+         StyleBox["A", "TI"], 
+         StyleBox["j", "TI"]]}], TraditionalForm], "errors" -> {}, "input" -> 
+    "Q(a+n){A_{n}}=-{\\sum\\limits_{j=0}^{n-1}}[(a+j){f_{1,n-j}}+{g_{n-j}}]{A_\
+{j}}", "state" -> "Boxes"|>,
+   "TeXAssistantTemplate"], 
+  TraditionalForm]],ExpressionUUID->"05d3858c-23c1-4b95-8672-4e87e76401a7"]], \
+"Text",
+ CellChangeTimes->{
+  3.9716951179067082`*^9, {3.9716953831692734`*^9, 3.971695467564722*^9}},
+ TextAlignment->Center,
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"6257513b-abd4-4400-b7e8-db26dd46de22"],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], 
+        RowBox[{"1", ",", 
+          StyleBox["j", "TI"]}]], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_{1,j}", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "386dc027-4d7b-428a-ae8a-3cae9ea9d7c9"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["g", "TI"], 
+        RowBox[{"2", ",", 
+          StyleBox["j", "TI"]}]], TraditionalForm], "errors" -> {}, "input" -> 
+     "g_{2,j}", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "c6daf6ae-4d44-4ee7-ad97-a31eb27fc0c8"],
+ " are the coefficients of the Taylor series expansions of ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "1"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_1", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "33b6b845-5c2d-4228-aff6-5974b6e0e3f9"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "2"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_2", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "be61a42a-a9b1-460e-8e2b-a1f664fd09f7"],
+ ", we need to choose ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       StyleBox["a", "TI"], TraditionalForm], "errors" -> {}, "input" -> "a", 
+     "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "d6abd747-815b-43d2-8de2-b0e54c0f7559"],
+ " as the biggest root of the indicial equation, otherwise ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Q", "(", 
+    TemplateBox[<|"boxes" -> FormBox[
+        RowBox[{
+          StyleBox["a", "TI"], "+", 
+          StyleBox["n", "TI"]}], TraditionalForm], "errors" -> {}, "input" -> 
+      "a+n", "state" -> "Boxes"|>,
+     "TeXAssistantTemplate"], ")"}], TraditionalForm]],ExpressionUUID->
+  "88321a0f-2602-4eee-94b5-18181d702953"],
+ "  would vanish, thus forcing the procedure to stop. Because of this, we \
+choose ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       RowBox[{
+         StyleBox["a", "TI"], "\[LongEqual]", 
+         StyleBox["m", "TI"], "+", 
+         StyleBox["s", "TI"]}], TraditionalForm], "errors" -> {}, "input" -> 
+     "a=m+s", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "63c1445e-4033-416f-93a8-9d8b5523ca4d"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.971695476706683*^9, 3.9716955114334173`*^9}, {
+  3.971695618925998*^9, 3.9716956627034874`*^9}, {3.971695758411602*^9, 
+  3.9716957720070744`*^9}, {3.9716958933428445`*^9, 3.9716958960462313`*^9}, {
+  3.9716959464647274`*^9, 
+  3.971695951168406*^9}},ExpressionUUID->"45883bd3-47fa-44b4-945c-\
+3b4886da8ce3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Recursive algorithm to determine coefficients", "Subsection",
+ CellChangeTimes->{{3.9716959733424835`*^9, 
+  3.9716959837666683`*^9}},ExpressionUUID->"3b66c608-74d1-442e-ad53-\
+c8cab960b0a6"],
+
+Cell["We choose the bigger root of the indicial equation:", "Text",
+ CellChangeTimes->{{3.9716962019359503`*^9, 
+  3.9716962272071733`*^9}},ExpressionUUID->"1cda16d7-a037-4b98-8ff6-\
+51bd03912c5f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a", "=", 
+  RowBox[{"m", "+", "s"}]}]], "Input",
+ CellChangeTimes->{{3.9716961526573644`*^9, 3.971696163283948*^9}, {
+  3.971696231020549*^9, 3.9716962596202316`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[12]:=",ExpressionUUID->"ff9ac755-4201-4f85-abe2-a5b9cd9219b9"],
+
+Cell[BoxData[
+ RowBox[{"m", "+", "s"}]], "Output",
+ CellChangeTimes->{{3.9716962328959465`*^9, 3.9716962613864*^9}},
+ Background->None,
+ CellLabel->"Out[12]=",ExpressionUUID->"77ee6e6f-3dcb-4a06-8aad-259aa8a6ab64"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We extract the coefficients of the Taylor series expansion of ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "1"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_1", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "9da320d5-d400-419a-b22c-a3c0a10e9324"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[<|"boxes" -> FormBox[
+       SubscriptBox[
+        StyleBox["f", "TI"], "2"], TraditionalForm], "errors" -> {}, "input" -> 
+     "f_2", "state" -> "Boxes"|>,
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "9ecb2b02-d959-4a3f-b75e-582fcd7ed95c"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.971696681929842*^9, 
+  3.971696710996627*^9}},ExpressionUUID->"a0d2158d-78f2-4fd9-84ff-\
+c94b060a0bfa"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c1", "[", "n_", "]"}], ":=", 
+  RowBox[{"SeriesCoefficient", "[", 
+   RowBox[{
+    RowBox[{"x", " ", 
+     RowBox[{"f1", "[", "x", "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "n"}], "}"}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"c2", "[", "n_", "]"}], ":=", 
+  RowBox[{"SeriesCoefficient", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "^", "2"}], " ", 
+     RowBox[{"f2", "[", "x", "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "n"}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.971696714121787*^9, 3.971696741828762*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[15]:=",ExpressionUUID->"c1b82578-ef01-41bc-8a31-c7fe46b16755"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"A", "[", "0", "]"}], "=", "A0"}], ";"}], "       ", 
+  RowBox[{"(*", 
+   RowBox[{"first", " ", "coefficient"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"A", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"A", "[", "n", "]"}], "=", 
+     FractionBox[
+      RowBox[{"-", 
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"a", "+", "j"}], ")"}], "*", 
+             RowBox[{"c1", "[", 
+              RowBox[{"n", "-", "j"}], "]"}]}], "+", 
+            RowBox[{"c2", "[", 
+             RowBox[{"n", "-", "j"}], "]"}]}], ")"}], "*", 
+          RowBox[{"A", "[", "j", "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "0", ",", 
+           RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}]}], 
+      RowBox[{"Q", "[", 
+       RowBox[{"a", "+", "n"}], "]"}]]}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"other", " ", "coefficients"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.971697624980328*^9, 3.971697670549982*^9}, {
+  3.9716977116138916`*^9, 3.97169771180241*^9}, {3.971697742609537*^9, 
+  3.9716978004065404`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->"In[18]:=",ExpressionUUID->"1b25ab8f-fd26-4a89-b1ca-8aaa339ddd02"],
+
+Cell["\<\
+Comment about the syntax: ChatGPT suggested that I write \
+\[OpenCurlyDoubleQuote]A[n_]:=A[n]=...\[CloseCurlyDoubleQuote] because
+1. A[n_] defines the function,
+2. A[n] saves the value of A[n_], that it does not need to be computed again \
+when used in the recursive formula.\
+\>", "Text",
+ CellChangeTimes->{{3.9716981290036926`*^9, 3.9716981929079313`*^9}},
+ Background->GrayLevel[
+  0.85],ExpressionUUID->"4337e53d-7697-40dd-bd1d-fad4acf6d208"],
+
+Cell["We compute some coefficients:", "Text",
+ CellChangeTimes->{{3.9716983724038477`*^9, 
+  3.9716983976993237`*^9}},ExpressionUUID->"f80f86de-540b-45a7-9d89-\
+2bb8b3a91d8f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"A", "[", "0", "]"}]], "Input",
+ CellChangeTimes->{{3.971698471416107*^9, 3.971698478406852*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"3879100c-467b-4958-8aef-5818a2041e13"],
+
+Cell[BoxData["A0"], "Output",
+ CellChangeTimes->{3.9716984791567307`*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"afe063dd-777b-47ff-bd3e-e6e23e2d9209"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"A", "[", "1", "]"}]], "Input",
+ CellChangeTimes->{{3.9716984809711742`*^9, 3.9716984819400997`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"509310ce-f2a9-4f3a-968c-829f0e5d388c"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.971698482674402*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"65f6461d-2a0e-491f-b4a7-20833cf5854d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"A", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{{3.9716984835503407`*^9, 3.971698484394085*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"c0ee0d0d-dab3-410f-b51c-d9069329fd9d"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"A0", " ", 
+    RowBox[{"(", 
+     RowBox[{"L", "+", 
+      RowBox[{
+       FractionBox["1", "3"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "m"}], "-", "s"}], ")"}]}], "+", 
+      RowBox[{"s", " ", 
+       RowBox[{"(", 
+        RowBox[{"m", "+", "s"}], ")"}]}], "-", 
+      RowBox[{
+       FractionBox["1", "3"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "s"}], ")"}], "2"]}], "-", 
+      RowBox[{"2", " ", "s", " ", "v"}], "+", 
+      SuperscriptBox["v", "2"]}], ")"}]}], 
+   RowBox[{"2", "+", "m", "+", "s", "-", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"m", "+", "s"}], ")"}], "2"], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "+", "m", "+", "s"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"2", "+", "m", "+", "s"}], ")"}]}]}]]}]], "Output",
+ CellChangeTimes->{3.971698485034786*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"ddbe3aaa-0c18-43e6-9345-b5be56804a77"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"A", "[", "3", "]"}]], "Input",
+ CellChangeTimes->{{3.9716984860512643`*^9, 3.9716984889274263`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"de3fd572-713b-4d36-b560-1445fb068923"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.97169848931798*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"b5e295bb-08f1-4c5c-b3f3-4b82fdbcbcc8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<mycode.tex\>\"", ",", 
+    RowBox[{"\"\<\\\\begin{verbatim}\\n\>\"", "<>", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{"ToString", "/@", 
+         RowBox[{"InputForm", "/@", 
+          RowBox[{"{", 
+           RowBox[{"(*", 
+            RowBox[{"your", " ", "code", " ", "list"}], "*)"}], "}"}]}]}], 
+        ",", "\"\<\\n\>\""}], "]"}], "]"}], "<>", 
+     "\"\<\\n\\\\end{verbatim}\>\""}]}], "]"}], "\n"}]], "Input",
+ CellChangeTimes->{{3.971698672090127*^9, 3.971698672090127*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"c7a58271-f0eb-4d91-bf7c-0688e2c41fa9"],
+
+Cell[BoxData["\<\"mycode.tex\"\>"], "Output",
+ CellChangeTimes->{3.9716986759894896`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"10c91175-4461-48f6-b240-ac9a158f3626"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NotebookExport", "[", 
+  RowBox[{"\"\<myNotebook.nb\>\"", ",", "\"\<LaTeX\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.9716986840582905`*^9, 3.9716986856082373`*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"8e7ae8ff-7a59-41ef-926f-f8cc21164732"],
+
+Cell[BoxData[
+ RowBox[{"NotebookExport", "[", 
+  RowBox[{"\<\"myNotebook.nb\"\>", ",", "\<\"LaTeX\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.971698686453908*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"edd8fffc-5c32-493b-94c2-8bd4a77d9952"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{960, 472},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c19ec215-c091-430e-8fb7-a36adf68522c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 175, 3, 62, "Chapter",ExpressionUUID->"84efa53c-4cbd-4111-b003-f55855088a25"],
+Cell[CellGroupData[{
+Cell[780, 29, 178, 3, 59, "Section",ExpressionUUID->"30d73514-471f-46a3-923e-52683421eec9"],
+Cell[961, 34, 348, 7, 31, "Text",ExpressionUUID->"a5aff03f-6e38-4705-b416-30aacf90d23c"],
+Cell[1312, 43, 1467, 44, 66, "Text",ExpressionUUID->"e9291554-6351-4d37-901e-3db464e016b5"],
+Cell[2782, 89, 374, 8, 31, "Text",ExpressionUUID->"c0cf5280-a314-45bb-b2c0-baae106588d9"],
+Cell[3159, 99, 1170, 31, 80, "Input",ExpressionUUID->"f3d36585-a536-440d-8784-f1013c8e1b0c"],
+Cell[4332, 132, 543, 11, 93, "Text",ExpressionUUID->"f259ef4a-fb53-4827-9fe9-4a9af49848de"],
+Cell[CellGroupData[{
+Cell[4900, 147, 165, 3, 48, "Subsection",ExpressionUUID->"8a9f7ef3-16a2-4db3-a4d2-24c8053122d7"],
+Cell[5068, 152, 176, 3, 31, "Text",ExpressionUUID->"a0a0578a-584f-4740-8851-05e7bca062df"],
+Cell[5247, 157, 800, 20, 48, "Text",ExpressionUUID->"bbd82fc1-5270-4f95-b5be-dafc6a64f42d"],
+Cell[6050, 179, 1579, 43, 34, "Text",ExpressionUUID->"8d809cb4-b6d9-4f35-a8e8-3551cf8585b7"],
+Cell[CellGroupData[{
+Cell[7654, 226, 593, 16, 75, "Input",ExpressionUUID->"6230befc-d800-449c-a1f5-ee7b62687912"],
+Cell[8250, 244, 577, 17, 47, "Output",ExpressionUUID->"60c365c9-63a5-423a-a2bf-2ec1b4e229ab"],
+Cell[8830, 263, 1782, 50, 44, "Output",ExpressionUUID->"5e585586-b97a-4a1d-b311-b8c1e541a46a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10649, 318, 676, 18, 75, "Input",ExpressionUUID->"81292d92-4fd5-457e-bf10-6b932e166186"],
+Cell[11328, 338, 150, 2, 28, "Output",ExpressionUUID->"4fab1866-c0a4-4f9e-9198-9a56d02938df"],
+Cell[11481, 342, 240, 6, 30, "Output",ExpressionUUID->"7f0eae06-28a7-489a-8b9b-becb57b05bf6"]
+}, Open  ]],
+Cell[11736, 351, 632, 17, 33, "Text",ExpressionUUID->"2d9de995-1702-4019-91f5-f8185974a688"],
+Cell[12371, 370, 499, 13, 57, "Input",ExpressionUUID->"f561d2ee-bd9c-4438-853a-67268ca94ea9"],
+Cell[12873, 385, 165, 3, 31, "Text",ExpressionUUID->"2576ba82-ac0d-4303-8ef1-f3bf3369eed1"],
+Cell[CellGroupData[{
+Cell[13063, 392, 373, 10, 57, "Input",ExpressionUUID->"d9b7dd37-6abc-49ee-aad8-b6a9ba5baf6d"],
+Cell[13439, 404, 376, 11, 28, "Output",ExpressionUUID->"4c680c24-6634-40d2-9691-b247a0b4fca5"]
+}, Open  ]],
+Cell[13830, 418, 729, 12, 72, "Text",ExpressionUUID->"bb107b29-0cf1-4ee7-90b2-c5c547ce2258"],
+Cell[14562, 432, 1655, 45, 72, "Text",ExpressionUUID->"6257513b-abd4-4400-b7e8-db26dd46de22"],
+Cell[16220, 479, 3001, 79, 60, "Text",ExpressionUUID->"45883bd3-47fa-44b4-945c-3b4886da8ce3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19258, 563, 197, 3, 48, "Subsection",ExpressionUUID->"3b66c608-74d1-442e-ad53-c8cab960b0a6"],
+Cell[19458, 568, 197, 3, 31, "Text",ExpressionUUID->"1cda16d7-a037-4b98-8ff6-51bd03912c5f"],
+Cell[CellGroupData[{
+Cell[19680, 575, 308, 6, 39, "Input",ExpressionUUID->"ff9ac755-4201-4f85-abe2-a5b9cd9219b9"],
+Cell[19991, 583, 214, 4, 28, "Output",ExpressionUUID->"77ee6e6f-3dcb-4a06-8aad-259aa8a6ab64"]
+}, Open  ]],
+Cell[20220, 590, 847, 23, 33, "Text",ExpressionUUID->"a0d2158d-78f2-4fd9-84ff-c94b060a0bfa"],
+Cell[21070, 615, 727, 20, 58, "Input",ExpressionUUID->"c1b82578-ef01-41bc-8a31-c7fe46b16755"],
+Cell[21800, 637, 1373, 39, 78, "Input",ExpressionUUID->"1b25ab8f-fd26-4a89-b1ca-8aaa339ddd02"],
+Cell[23176, 678, 457, 9, 87, "Text",ExpressionUUID->"4337e53d-7697-40dd-bd1d-fad4acf6d208"],
+Cell[23636, 689, 175, 3, 31, "Text",ExpressionUUID->"f80f86de-540b-45a7-9d89-2bb8b3a91d8f"],
+Cell[CellGroupData[{
+Cell[23836, 696, 199, 3, 25, "Input",ExpressionUUID->"3879100c-467b-4958-8aef-5818a2041e13"],
+Cell[24038, 701, 152, 2, 28, "Output",ExpressionUUID->"afe063dd-777b-47ff-bd3e-e6e23e2d9209"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24227, 708, 203, 3, 25, "Input",ExpressionUUID->"509310ce-f2a9-4f3a-968c-829f0e5d388c"],
+Cell[24433, 713, 149, 2, 28, "Output",ExpressionUUID->"65f6461d-2a0e-491f-b4a7-20833cf5854d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24619, 720, 201, 3, 25, "Input",ExpressionUUID->"c0ee0d0d-dab3-410f-b51c-d9069329fd9d"],
+Cell[24823, 725, 1012, 31, 56, "Output",ExpressionUUID->"ddbe3aaa-0c18-43e6-9345-b5be56804a77"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25872, 761, 203, 3, 25, "Input",ExpressionUUID->"de3fd572-713b-4d36-b560-1445fb068923"],
+Cell[26078, 766, 148, 2, 28, "Output",ExpressionUUID->"b5e295bb-08f1-4c5c-b3f3-4b82fdbcbcc8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26263, 773, 680, 16, 60, "Input",ExpressionUUID->"c7a58271-f0eb-4d91-bf7c-0688e2c41fa9"],
+Cell[26946, 791, 168, 2, 30, "Output",ExpressionUUID->"10c91175-4461-48f6-b240-ac9a158f3626"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27151, 798, 271, 4, 26, "Input",ExpressionUUID->"8e7ae8ff-7a59-41ef-926f-f8cc21164732"],
+Cell[27425, 804, 244, 4, 53, "Output",ExpressionUUID->"edd8fffc-5c32-493b-94c2-8bd4a77d9952"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
