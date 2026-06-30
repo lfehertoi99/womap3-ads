@@ -1,0 +1,1181 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{remark}[proposition]{Remark}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\half}{\frac12}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cI}{\mathcal I}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\e}{\mathrm e}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\begin{center}
+{\Large The Teukolsky--Starobinsky identities}\\[3pt]
+\end{center}
+
+\section{Kerr-AdS black holes}
+
+\subsection{The radial case}
+
+\subsubsection{The radial ODE and its solutions}
+
+Fix parameters subextremal Kerr-AdS parameters $(a,M,L)$ with $M>0$, $L>0$. Define $r_+$ to be the largest root of 
+\begin{equation} \label{eq:Delta-KAdS}
+\Delta:=(r^2+a^2)\left(1+\frac{r^2}{L^2}\right)-2Mr.
+\end{equation}
+We also set
+\begin{equation} \label{eq:Xi-KAdS}
+\Xi:=1-\frac{a^2}{L^2}.
+\end{equation}
+For $\omega\in \mathbb C$ and $m\in \frac12\mathbb Z$, it will be convenient to define
+\begin{equation}\label{eq:xi-KAdS}
+        \xi:=-\ii\frac{2Mr_+}{r_+-r_-}(\omega-m\omega_+);\qquad 
+        \omega_+:=\frac{a}{2Mr_+}.
+\end{equation}
+We say  $(\omega,m,\lambda)$ is an admissible frequency triple with respect to $a$ and $s$ if $(\omega,m,\lambda)\in \mathbb R^3$.
+
+In this section, we discuss the radial ODE
+\begin{equation}\label{eq:radial-ode-KAdS}
+\begin{split}
+&\Delta^{-s} \frac{d}{dr}\left(\Delta^{1+s}\frac{d}{dr}\right)R^{[s],(a\omega)}_{m\lambda}(r)+\frac{1}{\Delta}\left[\Xi^2(\omega(r^2+a^2)-am)^2 - is \Xi (\omega(r^2+a^2)-am) \frac{d\Delta}{dr}\right]R^{[s],(a\omega)}_{m\lambda}(r)\\
+&\quad+\left[4is\omega \Xi r+\frac{2}{L^2}(1+3s+2s^2)r^2+s\left(1+\frac{a^2}{L^2}\right)-\lambda+2\Xi^2 am\omega-a^2\Xi^2\omega^2\right]R^{[s],(a\omega)}_{m\lambda}(r)=0\,,
+\end{split}
+\end{equation}
+where $r\in (r_+,\infty)$.
+
+The radial ODE \eqref{eq:radial-ode-KAdS} has regular singularities at every one of the four roots of $\Delta$, and another regular singularity at $r=\infty$. By standard asymptotic analysis, we can span the solution space by two linearly independent asymptotic solutions at each of the singularities $r=r_+,\infty$. Our basis is given by the following:
+\begin{definition}\label{def:radial-basis-KAdS}
+Fix $M>0$, $|a|\leq M$, $s\in \frac12\mathbb Z$ and an admissible frequency triple $(\omega,m,\lambda)$ with respect to $a$ and $s$.
+\begin{enumerate}[label=\arabic*.]
+\item Define $R^{[s]}_{\cH+}$ and $R^{[s]}_{\cH-}$ to be the unique classical solutions to the homogeneous radial ODE \eqref{eq:radial-ode-KAdS} as follows.
+\begin{enumerate}[label=(\alph*)]
+\item If $\omega-m\omega_+\neq 0$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)(r-r_+)^{-\xi+s}$ and $R^{[s]}_{\cH-}(r)(r-r_+)^{\xi}$ are both smooth at $r=r_+$,
+\item $\left((r-r_+)^{-\xi+s}R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$, and
+ $\left((r-r_+)^{\xi}R^{[s]}_{\cH-}\right)\big|_{r=r_+}=1$;
+\end{enumerate}
+\item If $\omega=m\omega_+$, and $s\in \frac12\mathbb Z\backslash \mathbb Z_{> 0}$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)(r-r_+)^{s}$ is smooth at $r=r_+$,
+\item $\left((r-r_+)^{s}R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$,
+\end{enumerate}
+\item If $\omega=m\omega_+$, and $s\in \mathbb Z_{>0}$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)$ is smooth at $r=r_+$,
+\item $\left(R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$,
+\end{enumerate}
+\end{enumerate}
+\item Define $R^{[s]}_{\cI,1}$ and $R^{[s]}_{\cI,2}$ to be the unique classical solutions to the homogeneous radial ODE \eqref{eq:radial-ode-KAdS} with boundary conditions
+\begin{enumerate}[label=(\alph*)]
+\item $R^{[s]}_{\cI,1}r^{1+2s}$ and  $R^{[s]}_{\cI,2}r^{2+2s}$ are smooth as functions of $r^{-1}$ as $r\to\infty$,
+\item $\left(R^{[s]}_{\cI,1}r^{1+2s}\right)\big|_{r=\infty}=1$, and $\left(R^{[s]}_{\cI,2}r^{2+2s}\right)\big|_{r=\infty}=1$,
+\item $r^{1+2s}R^{[s]}_{\cI,1}-1=O(r^{-2})$ and $r^{2+2s}R^{[s]}_{\cI,2}-1=O(r^{-2})$ as $r\to \infty$.
+\end{enumerate}
+\end{enumerate}
+\end{definition}
+
+\begin{remark} The condition $r^{2+2s}R^{[s]}_{\cI,2}-1=O(r^{-2})$ follows from the previous constraints on $R^{[s]}_{\cI,2}$, through the recurrence relation for the Frobenius representation of this solution. On the contrary, the condition $r^{1+2s}R^{[s]}_{\cI,1}-1=O(r^{-2})$ is a {\normalfont choice} that is made so that $R^{[s]}_{\cI,1}$ is uniquely specified.
+\end{remark}
+
+
+\subsubsection{The radial Teukolsky--Starobinsky identities}
+
+In this section, we will introduce the Teukolsky--Starobinsky identities. We begin by defining the differential operators
+\begin{equation}\label{eq:Dpm-KAdS}
+        D^{\pm}_n=\frac{\dd}{\dd r}\pm\ii\left(\frac{\Xi\omega(r^2+a^2)}{\Delta}-\frac{a\Xi m}{\Delta}\right)+\frac{n}{\Delta}\frac{d\Delta}{dr}.
+\end{equation}
+
+The radial Teukolsky--Starobinsky identities are differential identities that relate solutions of the  radial ODE \eqref{eq:radial-ode} with spin $+s$ and spin $-s$. We will present a rigorous statement:
+
+\begin{proposition}[Radial Teukolsky--Starobinsky identities]\label{prop:radial-ts-KAdS}
+Fix subextremal $(a,M,L)$ Kerr-AdS parameters and $s\in \frac12\mathbb Z_{\geq0}$. Let $(\omega,m,\lambda)$ be an admissible frequency triple with respect to $s$ and $a$. There are constants $\mathfrak C^{[\pm s]}_{ji}\in\mathbb C$, for $i,j\in\{1,2\}$, which depend only on $s$, $(a,M,L)$ and $(\omega,m,\lambda)$, such that 
+\begin{align}
+\begin{split}
+\Delta^s(D^+ _0)^{2s}\left(\Delta^s R^{[+ s]}_{\cI,j}\right)
+&=\mathfrak C^{[+ s]}_{j1}R^{[- s]}_{\cI,1}
+  +\mathfrak C^{[+ s]}_{j2}R^{[- s]}_{\cI,2}\\
+\Delta^s(D^- _0)^{2s}\left( R^{[-s]}_{\cI,j}\right)
+&=\mathfrak C^{[- s]}_{j1}\Delta^sR^{[+ s]}_{\cI,1}
+  +\mathfrak C^{[- s]}_{j2}\Delta^sR^{[+ s]}_{\cI,2}
+\\
+  \end{split}
+\label{eq:TS-identities-KAdS}
+\end{align}
+for $j=1,2$. Furthermore, we have \texttt{at least for $s\leq 5/2$ [to check other cases]}
+\begin{align*}
+\left[\mathfrak C^{[0]}]\right]&=\begin{pmatrix}
+1&0\\
+0&1\\
+\end{pmatrix},\\
+\left[\mathfrak C^{[\pm s]}\right]&=(\pm 1)^{\sin^2(\pi s)}L^{\mp s}
+\begin{pmatrix}
+  \ii^{\sin^2(\pi s)}(\mathfrak p_{s,0}\mp \ii \mathfrak q_s) & \pm \ii^{\cos^2(\pi s)} L \mathfrak p_{s,2}\\
+\pm  \ii^{\cos^2(\pi s)}L^{-1}\mathfrak p_{s,1}& \ii^{\sin^2(\pi s)}(\mathfrak p_{s,0}\pm \ii \mathfrak q_s) 
+\end{pmatrix}, \qquad s\neq 0.
+\end{align*}
+%i.e.\
+%\begin{align*}
+%\left[\mathfrak C^{[0]}]\right]&=\begin{pmatrix}
+%1&0\\
+%0&1\\
+%\end{pmatrix},\\
+%\left[\mathfrak C^{[\pm \frac12]}\right]&= \mp L^{\mp 1}\begin{pmatrix}
+% i \mathfrak p_{\frac12,0} & \pm L \mathfrak p_{\frac12,2}\\
+%\pm L^{-1}\mathfrak p_{\frac12,1}&  i\mathfrak p_{\frac12,0}
+%\end{pmatrix},\\
+%\left[\mathfrak C^{[\pm 1]}\right]&= L^{\mp 2}\begin{pmatrix}
+%\mathfrak p_{1,0} & \pm  i L\mathfrak p_{1,2}\\
+%\pm iL^{-1}\mathfrak p_{1,1}& \mathfrak p_{1,0}
+%\end{pmatrix},\\
+%%
+%\left[\mathfrak C^{[\pm \frac32]}\right]&=\mp  L^{\mp 3}\begin{pmatrix}
+%i\mathfrak p_{\frac32,0}\pm \mathfrak q_{\frac32} &\pm L\mathfrak p_{\frac32,2}\\
+%\pm  L^{-1}\mathfrak p_{\frac32,1}& i\mathfrak p_{\frac32,0}\mp \mathfrak q_{\frac32}
+%\end{pmatrix},\\
+%%
+%\left[\mathfrak C^{[\pm 2]}\right]
+%&=
+%L^{\mp 4}
+%\begin{pmatrix}
+%\mathfrak p_{2,0}\mp i\mathfrak q_2
+%&
+%\pm iL\mathfrak p_{2,2}
+%\\
+%\pm iL^{-1}\mathfrak p_{2,1} 
+%&
+%\mathfrak p_{2,0}\pm i\mathfrak q_2
+%\end{pmatrix},\\
+%%
+%\left[\mathfrak C^{[\pm \frac52]}\right]&=\mp  L^{\mp 5}\begin{pmatrix}
+%i\mathfrak  p_{\frac52,0}\pm \mathfrak q_{\frac52} &\pm  L\mathfrak p_{\frac52,2}\\
+%\pm L^{-1}\mathfrak p_{\frac52,1}& i\mathfrak p_{\frac52,0}\mp \mathfrak q_{\frac52}
+%\end{pmatrix}.
+%\end{align*}
+Here, $\hat \Lambda=\lambda+a^2\Xi^2\omega^2-2a\Xi^2m\omega+|s|\left(1+\frac{a^2}{L^2}\right)$, and  $\mathfrak q_{s},\mathfrak p_{s,0},\mathfrak p_{s,1},\mathfrak p_{s,2}$ are given by
+\begin{itemize}
+\item for $s=1/2$,
+\begin{align*}
+\mathfrak q_{\frac12}=0, \qquad\mathfrak{p}_{\frac12,0}= -L\Xi\omega,\qquad 
+\mathfrak{p}_{\frac12,1}= 1,\qquad
+\mathfrak{p}_{\frac12,2}= \hat\Lambda-L^2\Xi^2\omega^2,
+\end{align*}
+with $\mathfrak{p}_{\frac12,0}^2+\mathfrak{p}_{\frac12,1}\mathfrak{p}_{\frac12,2}=\hat \Lambda$;
+\item for $s=1$,
+\begin{gather*}
+\mathfrak q_{1}=0, \qquad\mathfrak{p}_{1,0}= \hat\Lambda-2L^2\Xi^2\omega^2,\qquad
+\mathfrak{p}_{1,1}= -2L\Xi\omega,\\
+\mathfrak{p}_{1,2}= 2L^3\Xi^3\omega^3-2L\hat\Lambda\Xi\omega+\frac{2a}{L}(a\Xi\omega-\Xi m),
+\end{gather*}
+with $\mathfrak{p}_{1,0}^2+\mathfrak{p}_{1,1}\mathfrak{p}_{1,2}=\hat \Lambda^2+4a\Xi^2 m\omega-4a^2\Xi^2\omega^2$;
+\item for $s=3/2$,
+\begin{align*}
+\mathfrak q_{\frac32}&=\frac{2M}{L}, \\
+\mathfrak p_{\frac32,0}
+&= -\frac{4a}{L}\Xi m + 3\frac{a^2}{L}\Xi\omega
++ L\Xi\omega(-1 - 3\hat\Lambda + 4L^2\Xi^2\omega^2),\\
+\mathfrak p_{\frac32,1}
+&=  1 + \hat\Lambda - 4L^2\Xi^2\omega^2+\frac{a^2}{L^2},\\
+\mathfrak p_{\frac32,2}
+&= \hat\Lambda^2 - 8a\Xi^2m\omega
+- L^2(1 + 5\hat\Lambda)\Xi^2\omega^2
++ 4L^4\Xi^4\omega^4
+- \frac{a^2}{L^2}(4 - 7L^2\Xi^2\omega^2),
+\end{align*}
+with
+\begin{align*} \mathfrak p_{\frac32,0}^2+\mathfrak p_{\frac32,1}\mathfrak p_{\frac32,2}&=\hat\Lambda^2\left(\hat\Lambda+1+\frac{a^2}{L^2}\right)-4\hat\Lambda\left(4a^2\Xi^2\omega^2-4a\Xi^2m\omega+\frac{a^2}{L^2}\right)\\
+&+16a^2\Xi^2\omega^2\left(1+\frac{a^2}{L^2}\right) -\frac{4a^2}{L^2}\left(1+\frac{a^2}{L^2}-4\Xi^2m^2+8a\Xi^2m\omega\right);
+\end{align*}
+\item for $s=2$,
+\begin{align*}
+\mathfrak q_{2}&=12M\Xi\omega, \\
+\mathfrak p_{2,0}
+&= 2\hat\Lambda + \hat\Lambda^2 - 20a\Xi^2m\omega
+- 8L^2(1+\hat\Lambda)\Xi^2\omega^2
++ 8L^4\Xi^4\omega^4
++ 2a^2\left(\frac{\hat\Lambda - 6}{L^2} + 6\Xi^2\omega^2\right),\\
+\mathfrak p_{2,1}
+&= -8\frac{a}{L}\Xi m - 4L(2+\hat\Lambda)\Xi\omega
++ 8L^3\Xi^3\omega^3,\\
+\mathfrak p_{2,2}
+&= -4\hat\Lambda(1+\hat\Lambda)L\Xi\omega
++ 4L^3(2+3\hat\Lambda)\Xi^3\omega^3
+- 8L^5\Xi^5\omega^5
+- \frac{12a}{L}\hat\Lambda\Xi m
++ 32aL\Xi^3m\omega^2
+\\
+&\qquad + \frac{8a^2}{L}(3+\hat\Lambda)\Xi\omega
+- 24a^2L\Xi^3\omega^3,
+\end{align*}
+with
+\begin{align*}
+\mathfrak{p}_{2,0}^2+\mathfrak{p}_{2,1}\mathfrak{p}_{2,2}&=\hat\Lambda^2\left(\hat\Lambda+2\left(1+\frac{a^2}{L^2}\right)\right)^2
+-8\hat\Lambda^2\left(5a^2\Xi^2\omega^2-5a\Xi^2m\omega+3\frac{a^2}{L^2}\right)\\
+&\qquad
++48\hat\Lambda\left(
+\left(1+\frac{a^2}{L^2}\right)a^2\Xi^2\omega^2
++a\Xi^2m\omega\left(1-3\frac{a^2}{L^2}\right)
++2\frac{a^2}{L^2}\Xi^2 m^2
+\right)\\
+&\qquad
+-48\frac{a^2}{L^2}\hat\Lambda \left(1+\frac{a^2}{L^2}\right)
++144\left(a\Xi^2m\omega-a^2\Xi^2\omega^2+\frac{a^2}{L^2}\right)^2;
+\end{align*}
+\item for $s=5/2$,
+\begin{align*}
+\mathfrak q_{\frac52}
+&= \frac{6M}{L^3}\left(6a^2 + L^2(6+\hat\Lambda - 8L^2\Xi^2\omega^2)\right),\\
+\mathfrak p_{\frac52,0}
+&= -24\frac{a^3}{L^3}\Xi m + 15\frac{a^4}{L^3}\Xi\omega
++ 4\frac{a}{L}\Xi m(-6 - 5\hat\Lambda + 20L^2\Xi^2\omega^2)\\
+&\qquad
++ \frac{a^2}{L}(90\Xi\omega - 40L^2\Xi^3\omega^3)\\
+&\qquad
+- L\Xi\omega\left(
+9 + 5\hat\Lambda^2 - 40L^2\Xi^2\omega^2
++ 16L^4\Xi^4\omega^4
+- 20\hat\Lambda(-1 + L^2\Xi^2\omega^2)
+\right),\\
+\mathfrak p_{\frac52,1}
+&= \frac{9a^4}{L^4} - 48a\Xi^2m\omega
++ 2\frac{a^2}{L^2}(-9 + 3\hat\Lambda + 4L^2\Xi^2\omega^2)\\
+&\qquad
++\left(
+9 + \hat\Lambda^2 - 40L^2\Xi^2\omega^2
++ 16L^4\Xi^4\omega^4
++ \hat\Lambda(6 - 12L^2\Xi^2\omega^2)
+\right),\\
+\mathfrak p_{\frac52,2}
+&= - \frac{144M^2}{L^2} + \hat\Lambda^2(4+\hat\Lambda) 
++ 80\frac{a^3}{L^2}\Xi^2m\omega - 25\frac{a^4}{L^2}\Xi^2\omega^2\\
+&\qquad
+- L^2(9 + 34\hat\Lambda + 13\hat\Lambda^2)\Xi^2\omega^2
++ 4L^4(10 + 7\hat\Lambda)\Xi^4\omega^4
+- 16L^6\Xi^6\omega^6\\
+&\qquad
++ 8a\Xi^2m\omega(-6 - 9\hat\Lambda + 14L^2\Xi^2\omega^2)\\
+&\qquad
++ \frac{a^2}{L^2}\left(
+4\hat\Lambda^2 - 64\Xi^2m^2
++ 162L^2\Xi^2\omega^2 - 72L^4\Xi^4\omega^4
+- \hat\Lambda(48 - 38L^2\Xi^2\omega^2)
+\right).
+\end{align*}
+with $\mathfrak p_{\frac52,0}^2+\mathfrak p_{\frac52,1}\mathfrak p_{\frac52,2}$ \texttt{\textbf{NOT} equal to the angular TS constant and hence possibly not positive [?]}.
+\end{itemize}
+
+
+
+\end{proposition}
+
+In order to prove Proposition \ref{prop:radial-ts-KAdS}, we quote the following two results, obtained from adapting [KMW89] to the asymptotically AdS case:
+
+\begin{lemma}\label{lem:P-ode-KAdS} For solutions of the homogeneous radial ODE~\eqref{eq:radial-ode-KAdS} with spin $\pm s$, we set
+\begin{align*}
+P^{[+ s]}:=\Delta^s R^{[+s]}, \quad P^{[-s]}:=R^{[-s]}.
+\end{align*}
+Then, we have
+\begin{equation}\label{eq:P-ode-KAdS}
+\begin{split}
+&\left[\Delta D^{\mp}_{1-s}D^{\pm}_0\pm2(2s-1)\ii\Xi\omega r+\frac{2r^2}{L^2}(1-3|s|+2s^2)\right]P^{[\pm s]}(r)\\
+&\quad=\left(\lambda+|s|\left(1+\frac{a^2}{L^2}\right)+a^2\Xi^2\omega^2-2a\Xi^2m\omega\right)P^{[\pm s]}(r).
+\end{split}
+\end{equation}
+\end{lemma}
+
+By induction on $2s$, one can also show that:
+
+\begin{lemma}\label{lem:radial-commutation-KAdS}
+The operators $D^{\pm}_0$, defined in \eqref{eq:Dpm-KAdS}, satisfy the commutation relation
+\begin{align}\label{eq:radial-commutation-KAdS}
+&\Delta^s(D^{\mp}_0)^{2s}
+\left[\Delta D^{\pm}_{1-s}D^{\mp}_0\mp2(2s-1)\ii\Xi\omega r+\frac{2r^2}{L^2}(1-3|s|+2s^2)\right]
+\notag\\
+&\hspace{35mm}=
+\left[\Delta D^{\mp}_{1-s}D^{\pm}_0\pm2(2s-1)\ii\Xi\omega r+\frac{2r^2}{L^2}(1-3|s|+2s^2)\right]
+\Delta^s(D^{\mp}_0)^{2s}.
+\end{align}
+\end{lemma}
+
+Combining the two lemmas, we see that, if $P^{[\pm s]}$ solves \eqref{eq:P-ode} with spin $\pm$, then $\Delta^s(D^{\pm}_0)^{2s}P^{[\pm s]}$ is a solution of the homogeneous radial ODE \eqref{eq:P-ode} for spin $\mp s$.
+
+\begin{proof}[Proof of Proposition \ref{prop:radial-ts}]
+The statement is trivial for $s=0$. For $s\neq0$, we obtain the result by considering  the Frobenius representations of $R^{[\pm s]}_{\cI,1}$ and $R^{[\pm s]}_{\cI,2}$, on which we can act directly with the Teukolsky--Starobinsky operators. In terms of $x=1/r$, these are
+\begin{align*}
+R^{[\pm s]}_{\cI,1}=x^{1\pm 2s}\left(1+\sum_{k=2}^\infty c_{k,1}^{[\pm s]}x^k\right),\\
+R^{[\pm s]}_{\cI,2}=x^{2\pm 2s}\left(1+\sum_{k=2}^\infty c_{k,2}^{[\pm s]}x^k\right).
+\end{align*}
+[COMPLETE ME]
+\end{proof}
+
+\subsubsection{An energy current}
+
+In this section, we derive an energy current for the radial ODE~\eqref{eq:radial-ode-KAdS}. To do, it is convenient to recast it in terms of another variable: writing $u^{[s],(a\omega)}_{m\lambda}= (r^2+a^2)^{1/2}\Delta^{s/2}R^{[s],(a\omega)}_{m\lambda}$, we have
+\begin{gather}
+    \partial_{r^*}^2 u^{[s],(a\omega)}_{m\lambda} + (\Xi^2\omega^2-V^{[s],(a\omega)}_{m\lambda})u^{[s],(a\omega)}_{m\lambda}=0,  \label{eq:radial-ode-u-KAdS}\\
+    \begin{aligned}
+    V^{[s],(a\omega)}_{m\lambda}&= \frac{2am\Xi^2\omega}{r^2+a^2}
+-\frac{a^2\Xi^2m^2}{(r^2+a^2)^2}+is\frac{\partial_r\Delta}{r^2+a^2}\left(
+\Xi\omega
+-\frac{a\Xi m}{(r^2+a^2)}
+\right)\\
+&\quad-\frac{\Delta}{(r^2+a^2)^2}\left(
+\frac{2 r^2}{L^2}
+-\lambda+2\Xi^2am\omega-a^2\Xi^2\omega^2
++4is\Xi\omega r\right)
++\partial_{r^*}\left(\frac{r\Delta}{(r^2+a^2)^2}\right)\\
+&\quad
++s^2\left[
+\frac{(\partial_r\Delta)^2}{4(r^2+a^2)^2}
+-\frac{4r^2\Delta}{L^2(r^2+a^2)^2}
+\right] +\left(\frac{r\Delta}{(r^2+a^2)^2}\right)^2,
+\end{aligned}\notag
+\end{gather}
+where we have introduced a coordinate $r^*\colon (-\infty, \pi/2)$ defined via
+\begin{align*}
+    \frac{dr^*}{dr}=\frac{r^2+a^2}{\Delta}, \quad r^*(r)\to \pi/2 \text{~as $r\to \infty$.}
+\end{align*}
+
+Our energy current is based on the following conservation law:
+
+\begin{lemma}\label{lem:Wronskian-conservation-KAdS} Fix $(a,M,L)$ subextremal and $s\in\frac12\mathbb Z_{\geq 0}$. If $(\omega,m,\lambda)$ is an admissible frequency triple with respect to $s$ and $a$, then
+\begin{align*}
+\frac{d}{dr^*}W[\overline{u^{[+s]}},u^{[-s]}]=0, \qquad W[\overline{u^{[+s]}},u^{[-s]}]= \overline{u^{[+s]}}\frac{d}{dr^*}u^{[-s]}- u^{[-s]}\frac{d}{dr^*}\overline{u^{[+s]}}
+\end{align*}
+\end{lemma}
+
+We then have
+\begin{proposition}[Energy current] 
+[To FILL]
+\end{proposition}
+
+\begin{proof}
+Note that there are constants $a_{\cI,1}^{[\pm s]}$, $a_{\cI,2}^{[\pm s]}$ such that 
+\begin{align*}
+u^{[\pm s]} = a_{\cI,1}^{[\pm s]}\Delta^{\pm s/2}(r^2+a^2)^{1/2}R_{\cI,1}^{[\pm s]}+ a_{\cI,2}^{[\pm s]}\Delta^{\pm s/2}(r^2+a^2)^{1/2}R_{\cI,2}^{[\pm s]};
+\end{align*}
+so we have 
+\begin{align*}
+\lim_{r\to \infty}W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))= \frac{1}{L^2}(a_{\cI,1}^{[-s]},\overline{a_{\cI,2}^{[+s]}}-a_{\cI,2}^{[-s]},\overline{a_{\cI,1}^{[+s]}}).
+\end{align*}
+
+To obtain a conservation law for $\pm s$, we apply Lemma~\ref{lem:Wronskian-conservation-KAdS} with $u^{[\mp s]}$ obtained from $u^{[\pm s]}$ via the Teukolsky--Starobinsky map in Proposition~\ref{prop:radial-ts-KAdS}. In this case, $a_{\cI,1}^{[\pm s]}$ and $a_{\cI,2}^{[\pm s]}$ are free but  $a_{\cI,1}^{[\mp s]}$ and $a_{\cI,2}^{[\mp s]}$ are determined by the aforementioned proposition:
+\begin{align*}
+a_{\cI,1}^{[\mp s]}&=\mathfrak C_{11}^{[\pm s]}a_{\cI,1}^{[\pm s]}+\mathfrak C_{21}^{[\pm s]}a_{\cI,2}^{[\pm s]}\\
+a_{\cI,2}^{[\mp s]}&=\mathfrak C_{12}^{[\pm s]}a_{\cI,1}^{[\pm s]}+\mathfrak C_{22}^{[\pm s]}a_{\cI,2}^{[\pm s]}
+\end{align*}
+Then, we have
+\begin{align*}
+\lim_{r\to \infty}W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))
+=
+\frac{1}{L^2}\Big(
+&-\mathfrak C_{12}^{[+s]}
+\left|a_{\cI,1}^{[+s]}\right|^2
++\mathfrak C_{21}^{[+s]}
+\left|a_{\cI,2}^{[+s]}\right|^2 \\
+&+\mathfrak C_{11}^{[+s]}
+a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s]}}
+-\mathfrak C_{22}^{[+s]}
+a_{\cI,2}^{[+s]}\overline{a_{\cI,1}^{[+s]}}
+\Big),
+\end{align*}
+and
+\begin{align*}
+\lim_{r\to \infty}
+W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))
+=
+\frac{1}{L^2}\Big(
+&\overline{\mathfrak C_{12}^{[-s]}}
+\left|a_{\cI,1}^{[-s]}\right|^2
+-\overline{\mathfrak C_{21}^{[-s]}}
+\left|a_{\cI,2}^{[-s]}\right|^2 \\
+&+\overline{\mathfrak C_{22}^{[-s]}}
+a_{\cI,1}^{[-s]}\overline{a_{\cI,2}^{[-s]}}
+-\overline{\mathfrak C_{11}^{[-s]}}
+a_{\cI,2}^{[-s]}\overline{a_{\cI,1}^{[-s]}}
+\Big),
+\end{align*}
+respectively. For instance, using Proposition~\ref{prop:radial-ts-KAdS}, we have
+%\begin{align*}
+%& L^{-3}\left(
+%L\mathfrak p_{\frac12,2}|a_{\cI,1}^{[+\frac12]}|^2
+%- L^{-1}\mathfrak p_{\frac12,1}|a_{\cI,2}^{[+\frac12]}|^2
+%+ 2\mathfrak p_{\frac12,0}\Im(a_{\cI,1}^{[+\frac12]}\overline{a_{\cI,2}^{[+\frac12]}})
+%\right),
+%\\
+%& \ii L^{-4}\left(
+%- L\mathfrak p_{1,2}|a_{\cI,1}^{[+1]}|^2
+%+ L^{-1}\mathfrak p_{1,1}|a_{\cI,2}^{[+1]}|^2
+%+ 2\mathfrak p_{1,0}\Im(a_{\cI,1}^{[+1]}\overline{a_{\cI,2}^{[+1]}})
+%\right),
+%\\
+%& L^{-5}\left(
+%L\mathfrak p_{\frac32,2}|a_{\cI,1}^{[+\frac32]}|^2
+%- L^{-1}\mathfrak p_{\frac32,1}|a_{\cI,2}^{[+\frac32]}|^2
+%+ 2\mathfrak p_{\frac32,0}\Im(a_{\cI,1}^{[+\frac32]}\overline{a_{\cI,2}^{[+\frac32]}})
+%- \frac{4M}{L}\Re(a_{\cI,1}^{[+\frac32]}\overline{a_{\cI,2}^{[+\frac32]}})
+%\right),
+%\\
+%&\ii L^{-6}\left(
+%-L\mathfrak p_{2,2}|a_{\cI,1}^{[+2]}|^2
+%+ L^{-1}\mathfrak p_{2,1}|a_{\cI,2}^{[+2]}|^2
+%+ 2\mathfrak p_{2,0}\Im(a_{\cI,1}^{[+2]}\overline{a_{\cI,2}^{[+2]}})
+%- 24M\Xi\omega\Re(a_{\cI,1}^{[+2]}\overline{a_{\cI,2}^{[+2]}})
+%\right),
+%\\
+%& L^{-7}\left(
+%L\mathfrak p_{\frac52,2}|a_{\cI,1}^{[+\frac52]}|^2
+%- L^{-1}\mathfrak p_{\frac52,1}|a_{\cI,2}^{[+\frac52]}|^2
+%+ 2\mathfrak p_{\frac52,0}\Im(a_{\cI,1}^{[+\frac52]}\overline{a_{\cI,2}^{[+\frac52]}})
+%- 2\mathfrak q_{\frac52}\Re(a_{\cI,1}^{[+\frac52]}\overline{a_{\cI,2}^{[+\frac52]}})
+%\right),
+%\end{align*}
+\begin{align*}
+\lim_{r\to \infty}W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))=\ii^{\cos^2(\pi s)}L^{-(2s+2)}&\left(
+-(-1)^{2s}L\mathfrak p_{s,2}|a_{\cI,1}^{[+s]}|^2
++(-1)^{2s} L^{-1}\mathfrak p_{s,1}|a_{\cI,2}^{[+s]}|^2\right.
+\\
+&\qquad\left.+ 2\mathfrak p_{s,0}\Im(a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s}})
+- 2\mathfrak q_{s}\Re(a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s]}})
+\right)
+\end{align*}
+in the first case, and [COMPLETE ME WITH SECOND CASE]
+\end{proof}
+
+\begin{lemma} Suppose $\mathfrak P_s:=\mathfrak p_{s,0}^2+\mathfrak p_{s,1}\mathfrak p_{s,2}>0$. Then, 
+\begin{align*}
+\begin{pmatrix}
+\mathfrak p_{s,0}\pm\sqrt{\mathfrak P_s}
+&
+\ii (-1)^{2s }L^{-1}\mathfrak p_{s,1}
+\\
+\ii (-1)^{2s} L\mathfrak p_{s,2}
+&
+\mathfrak p_{s,0}\mp\sqrt{\mathfrak P_s}
+\end{pmatrix}\binom{a_{\cI,1}^{[+s]}}{a_{\cI,2}^{[+s]}}
+=0 \implies \lim_{r\to \infty}W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))=0.
+\end{align*}
+\texttt{The converse is not true.}
+
+[COMPLETE ME WITH STATEMENT FOR NEGATIVE SPIN]
+\end{lemma}
+
+\begin{proof} A simple computation yields
+\begin{align*}
+\begin{pmatrix}
+\mathfrak p_{s,0}\pm\sqrt{\mathfrak P_s}
+&
+\ii (-1)^{2s }L^{-1}\mathfrak p_{s,1}
+\\
+\ii (-1)^{2s} L\mathfrak p_{s,2}
+&
+\mathfrak p_{s,0}\mp\sqrt{\mathfrak P_s}
+\end{pmatrix}\binom{a_{\cI,1}^{[+s]}}{a_{\cI,2}^{[+s]}}=0 \\
+\implies 
+\begin{dcases}
+(-1)^{2s}L^{-1}\mathfrak p_{s,1}|a_{\cI,2}^{[+s]}|^2=i(\mathfrak p_{s,0}\pm\sqrt{\mathfrak P})a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s]}}\\
+(-1)^{2s}L^{-1}\mathfrak p_{s,2}|a_{\cI,1}^{[+s]}|^2=i(\mathfrak p_{s,0}\mp\sqrt{\mathfrak P})\overline{a_{\cI,1}^{[+s]}}a_{\cI,2}^{[+s]}
+\end{dcases}.
+\end{align*}
+Subtracting the two equations, we get
+\begin{align*}
+-(-1)^{2s}L\mathfrak p_{s,2}|a_{\cI,1}^{[+s]}|^2
++(-1)^{2s} L^{-1}\mathfrak p_{s,1}|a_{\cI,2}^{[+s]}|^2=-2\mathfrak p_{s,0}\Im(a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s}})+2\ii \sqrt{\mathfrak P_s} \Re(a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s}});
+\end{align*}
+on the other hand, taking imaginary parts of the two equations, we obtain
+\begin{align*}
+(\mathfrak p_{s,0}\mp\sqrt{\mathfrak P_s})\Re(\overline{a_{\cI,1}^{[+s]}}a_{\cI,2}^{[+s]})=0=(\mathfrak p_{s,0}\pm\sqrt{\mathfrak P_s})\Re(\overline{a_{\cI,1}^{[+s]}}a_{\cI,2}^{[+s]})\implies \Re(\overline{a_{\cI,1}^{[+s]}}a_{\cI,2}^{[+s]})=0,
+\end{align*}
+since $\sqrt{\mathfrak P_s}\neq 0$. Thus, we have
+\begin{align*}
+\lim_{r\to \infty}W[\overline{u^{[+s]}},u^{[-s]}](r^*(r))=-2\ii^{\cos^2(\pi s)}L^{-(2s+2)}
+\mathfrak q_{s}\Re(a_{\cI,1}^{[+s]}\overline{a_{\cI,2}^{[+s]}})=0.
+\end{align*}
+\end{proof}
+
+
+\subsection{Comparison with Graf--Holzegel}
+
+In comparing the section above with the paper of Graf--Holzegel, it is important to note that 
+\begin{align*}
+L&=1/k_{\text{GH}},\\
+\hat \Lambda&=\lambda_{m\ell,\text{~GH}}^{\omega},\\
+R_{m\lambda}^{[\pm 2],(a\omega)}&= \frac{(r^2+a^2)^{3/2}}{\Delta^{(1\pm 1)}}R^{m\ell}_{[\pm 2],\omega, \text{~GH}},
+\end{align*}
+where the subscript GH refers to the Graf--Holzegel variables.
+
+The Robin boundary conditions of Graf--Holzegel's appendix are, in our notation,
+\[
+\mathcal R_\pm
+\binom{a_{\cI,1}^{[+2]}}{a_{\cI,2}^{[+2]}}
+=0, \quad \mathcal R_\pm
+\binom{a_{\cI,1}^{[-2]}}{a_{\cI,2}^{[-2]}}
+=0,
+\]
+where
+\[
+\mathcal R_\pm
+:=
+\begin{pmatrix}
+\mathfrak p_{2,0}\pm\sqrt{\mathfrak p_{2,0}^2+\mathfrak p_{2,1}\mathfrak p_{2,2}}
+&
+\ii L^{-1}\mathfrak p_{2,1}
+\\
+\ii L\mathfrak p_{2,2}
+&
+\mathfrak p_{2,0}\mp\sqrt{\mathfrak p_{2,0}^2+\mathfrak p_{2,1}\mathfrak p_{2,2}}
+\end{pmatrix}.
+\]
+
+\subsection{Comparison with Wang--Herdeiro--Jing/Sampaio}
+
+In comparing the section above with the paper of  Wang--Herdeiro--Sampaio, it is important to note that (comparing the radial ODEs) 
+\begin{align*}
+\hat\Lambda&=\lambda_{\text{WHS}}-\frac{a^2}{L^2}\\
+R_{m\lambda}^{[\pm 1],(a\omega)}&= R_{\pm 1, \text{~WHS}},
+\end{align*}
+where the subscript WHS refers to the Wang--Herdeiro--Sampaio variables.
+
+The Robin boundary conditions of Wang--Herdeiro--Sampaio appendix are, in our notation, [FILL ME].
+
+[ADD COMPARISON TO Wang--Herdeiro--Jing]
+
+\section{Kerr black holes}
+
+
+
+\subsection{The radial case}
+
+
+
+\subsubsection{The radial ODE and its solutions}
+Fix parameters $(a,M)$ with $M>0$ and $|a|\leq M$ and define
+\begin{equation}\label{eq:rpm}
+        r_{\pm}:=M\pm \sqrt{M^2-a^2}.
+\end{equation}
+We write
+\begin{equation}\label{eq:Delta}
+        \Delta:=r^2-2Mr+a^2=(r-r_+)(r-r_-).
+\end{equation}
+For $\omega\in \mathbb C$ and $m\in \frac12\mathbb Z$, it will be convenient to define
+\begin{equation}\label{eq:xi-beta}
+        \xi:=-\ii\frac{2Mr_+}{r_+-r_-}(\omega-m\omega_+), \text{~~if $|a|<M$};\qquad
+        \beta:=2\ii M^2(\omega-m\omega_+);\qquad
+        \omega_+:=\frac{a}{2Mr_+}.
+\end{equation}
+We say  $(\omega,m,\lambda)$ is an admissible frequency triple with respect to $a$ and $s$ if $(\omega,m,\lambda)\in \mathbb R^3$,  $\omega\neq 0$ and, for $|a|=M$, if $\omega\neq m\omega_+$ too.
+
+In this section, we discuss the radial ODE
+\begin{align}
+&\Delta^{-s}\frac{\dd}{\dd r}\left(\Delta^{s+1}\frac{\dd}{\dd r}\right)
+        R^{[s],(a\omega)}_{m\lambda}(r)
+ +\left(\frac{[\omega(r^2+a^2)-am]^2-2\ii s(r-M)[\omega(r^2+a^2)-am]}{\Delta}\right)
+        R^{[s],(a\omega)}_{m\lambda}(r) \notag\\
+&\hspace{30mm}
+ +\left(4\ii s\omega r-\lambda+s-a^2\omega^2+2am\omega\right)
+        R^{[s],(a\omega)}_{m\lambda}(r)
+        =0
+\label{eq:radial-ode}
+\end{align}
+where $r\in (r_+,\infty)$.
+
+The radial ODE \eqref{eq:radial-ode} has singularities at $r=r_{\pm}$, which are regular if $|a|<M$ but are a single irregular singularity of rank $1$ if $|a|=M$, and an irregular singularity of rank $1$ at $r=\infty$. By standard asymptotic analysis, we can span the solution space by two linearly independent asymptotic solutions at each of the singularities $r=r_+,\infty$. Our basis is given by the following:
+
+\begin{definition}\label{def:radial-basis}
+Fix $M>0$, $|a|\leq M$, $s\in \frac12\mathbb Z$ and an admissible frequency triple $(\omega,m,\lambda)$ with respect to $a$ and $s$.
+\begin{enumerate}[label=\arabic*.]
+\item Define $R^{[s]}_{\cH+}$ and $R^{[s]}_{\cH-}$ to be the unique classical solutions to the homogeneous radial ODE \eqref{eq:radial-ode} with boundary conditions
+\begin{enumerate}[label=(\alph*)]
+\item if $|a|<M$ and additionally $\omega-m\omega_+\neq 0$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)(r-r_+)^{-\xi+s}$ and $R^{[s]}_{\cH-}(r)(r-r_+)^{\xi}$ are both smooth at $r=r_+$,
+\item $\left((r-r_+)^{-\xi+s}R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$, and
+ $\left((r-r_+)^{\xi}R^{[s]}_{\cH-}\right)\big|_{r=r_+}=1$;
+\end{enumerate}
+\item if $|a|<M$, $\omega=m\omega_+$, and $s\in \frac12\mathbb Z\backslash \mathbb Z_{> 0}$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)(r-r_+)^{s}$ is smooth at $r=r_+$,
+\item $\left((r-r_+)^{s}R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$,
+\end{enumerate}
+\item if $|a|<M$, $\omega=m\omega_+$, and $s\in \mathbb Z_{>0}$,
+\begin{enumerate}[label=\roman*.]
+\item $R^{[s]}_{\cH+}(r)$ is smooth at $r=r_+$,
+\item $\left(R^{[s]}_{\cH+}\right)\big|_{r=r_+}=1$,
+\end{enumerate}
+\item if $|a|=M$ and additionally $\omega-m\omega_+\neq0$,
+\begin{enumerate}[label=\roman*.]
+\item $(r-M)^{2\ii M\omega+2s}R^{[s]}_{\cH+}(r)e^{-\beta(r-M)^{-1}}$ and $(r-M)^{-2\ii M\omega}R^{[s]}_{\cH-}(r)e^{\beta(r-M)^{-1}}$ are both smooth at $r=M$,
+\item $\left((r-M)^{2\ii M\omega+2s}e^{-\beta(r-M)^{-1}}R^{[s]}_{\cH+}\right)\big|_{r=M}=1$, and
+$\left((r-M)^{-2\ii M\omega}e^{\beta(r-M)^{-1}}R^{[s]}_{\cH-}\right)\big|_{r=M}=1$.
+\end{enumerate}
+\end{enumerate}
+\item Define $R^{[s]}_{\cI+}$ and $R^{[s]}_{\cI-}$ to be the unique classical solutions to the homogeneous radial ODE \eqref{eq:radial-ode} and boundary conditions
+\begin{enumerate}[label=(\alph*)]
+\item $R^{[s]}_{\cI+}\sim e^{\ii\omega r}r^{2M\ii\omega-2s-1}$ and $R^{[s]}_{\cI-}\sim e^{-\ii\omega r}r^{-2M\ii\omega-1}$ asymptotically\footnote{We write $f\sim g$ asymptotically as $r\to\infty$ to mean that for every $N\geq 0$, we have complex numbers $c_1, \dots, c_N$ such that $f(r)=g(r)\left[1+\sum_{k=1}^N c_k r^{-k}+O(r^{-N-1})\right]$.} as $r\to\infty$,
+\item $\left(e^{-\ii\omega r}r^{-2\ii M\omega+1+2s}R^{[s]}_{\cI+}\right)\big|_{r=\infty}=1$, and $\left(e^{\ii\omega r}r^{2\ii M\omega+1}R^{[s]}_{\cI-}\right)\big|_{r=\infty}=1$.
+\end{enumerate}
+\end{enumerate}
+\end{definition}
+
+In light of the previous comments, we find that we have the following representation for solutions of \eqref{eq:radial-ode}:
+
+\begin{lemma}\label{lem:radial-representation}
+Fix $M>0$, $|a|\leq M$, $s\in \frac12\mathbb Z$ and an admissible frequency triple $(\omega,m,\lambda)$ with respect to $a$ and $s$ such that $\omega\neq m\omega_+$. A solution $R^{[s],(a\omega)}_{m\lambda}$ to the homogeneous radial ODE \eqref{eq:radial-ode} can be written as, dropping most sub and superscripts,
+\begin{equation}\label{eq:radial-representation}
+        R^{[s]}=a^{[s]}_{\cH+}R^{[s]}_{\cH+}+a^{[s]}_{\cH-}R^{[s]}_{\cH-},
+        \qquad
+        R^{[s]}=a^{[s]}_{\cI+}R^{[s]}_{\cI+}+a^{[s]}_{\cI-}R^{[s]}_{\cI-},
+\end{equation}
+for some $a^{[s]}_{\cH\pm},a^{[s]}_{\cI\pm}\in\mathbb C$.
+\end{lemma}
+
+\subsubsection{The radial Teukolsky--Starobinsky identities}
+
+In this section, we will introduce the Teukolsky--Starobinsky identities. We begin by defining the differential operators
+\begin{equation}\label{eq:Dpm}
+        D^{\pm}_n=\frac{\dd}{\dd r}\pm\ii\left(\frac{\omega(r^2+a^2)}{\Delta}-\frac{am}{\Delta}\right)+\frac{2n(r-M)}{\Delta}.
+\end{equation}
+
+
+The radial Teukolsky--Starobinsky identities are differential identities that relate solutions of the  radial ODE \eqref{eq:radial-ode} with spin $+s$ and spin $-s$, and were introduced in [TP74, SC74] and extended for general $s$ in [KMW89]. We will present a rigorous statement:
+
+\begin{proposition}[Radial Teukolsky--Starobinsky identities]\label{prop:radial-ts}
+Fix $M>0$, $|a|\leq M$ and $s\in \frac12\mathbb Z_{\geq0}$. Let $(\omega,m,\lambda)$ be an admissible frequency triple with respect to $s$ and $a$. Dropping most subscripts, let $R^{[\pm s]}$ be solutions to the homogeneous radial ODE \eqref{eq:radial-ode} of spin $\pm s$. If $\omega\neq m\omega_+$, consider the representation \eqref{eq:radial-representation}
+\begin{align*}
+R^{[\pm s]}&=a^{[\pm s]}_{\cH+}R^{[\pm s]}_{\cH+}
+       +a^{[\pm s]}_{\cH-}R^{[\pm s]}_{\cH-} \\
+&=a^{[\pm s]}_{\cI+}R^{[\pm s]}_{\cI+}
+       +a^{[\pm s]}_{\cI-}R^{[\pm s]}_{\cI-};
+\end{align*}
+otherwise, we consider outgoing boundary conditions, i.e.\
+\begin{align*}
+R^{[\pm s]}&=a^{[\pm s]}_{\cH+}R^{[\pm s]}_{\cH+}\\
+&=a^{[\pm s]}_{\cI+}R^{[\pm s]}_{\cI+},
+\end{align*}
+and set $a^{[\pm s]}_{\cH-}=0=a^{[\pm s]}_{\cI-}$ by convention. Then we have
+\begin{align}
+\Delta^s(D^+_0)^{2s}\left(\Delta^s R^{[+s]}\right)
+&=\mathfrak C^{(1)}_s a^{[+s]}_{\cI+}R^{[-s]}_{\cI+}
+  +\mathfrak C^{(7)}_s a^{[+s]}_{\cI-}R^{[-s]}_{\cI-} \notag\\
+&=\mathfrak C^{(4)}_sa^{[+s]}_{\cH+}R^{[-s]}_{\cH+}
+  +\mathfrak C^{(6)}_sa^{[+s]}_{\cH-}R^{[-s]}_{\cH-},
+\notag\\[2mm]
+\Delta^s(D^-_0)^{2s}R^{[-s]}
+&=\mathfrak C^{(3)}_s a^{[-s]}_{\cI+}\Delta^sR^{[+s]}_{\cI+}
+  +\mathfrak C^{(5)}_s a^{[-s]}_{\cI-}\Delta^sR^{[+s]}_{\cI-} \notag\\
+&=\mathfrak C^{(2)}_sa^{[-s]}_{\cH+}\Delta^sR^{[+s]}_{\cH+}
+  +\mathfrak C^{(8)}_sa^{[-s]}_{\cH-}\Delta^sR^{[+s]}_{\cH-},
+\label{eq:TS-identities}
+\end{align}
+for some $\mathfrak C^{(i)}_s\in\mathbb C$, $i=1,\dots,8$, which depend only on $s$, $(a,M)$ and $(\omega,m,\lambda)$ and such that $\mathfrak C^{(i)}_0=1$ for $s=0$ and, for $s\neq 0$,
+\begin{equation*}
+        \mathfrak C^{(1)}_s=(2\ii\omega)^{2s},
+        \qquad
+        \mathfrak C^{(5)}_s=(-2\ii\omega)^{2s},
+\end{equation*}
+ and
+\begin{equation}\label{eq:C2-C6}
+\begin{gathered}
+\mathfrak C^{(2)}_s=
+\begin{cases}
+\displaystyle \prod_{j=0}^{2s-1}(2\xi+s-j), & |a|<M, \text{~and either $\omega\neq m\omega_+$ or $s\in\frac12\mathbb Z_{\geq 0}\backslash\mathbb Z$},\\[2mm]
+(-2\beta)^{2s}, & |a|=M,
+\end{cases}
+\\
+\mathfrak C^{(6)}_s=
+\begin{cases}
+\displaystyle (r_+-r_-)^{2s}\prod_{j=0}^{2s-1}(-2\xi+s-j), & |a|<M, \text{~and either $\omega\neq m\omega_+$ or $s\in\frac12\mathbb Z_{\geq 0}\backslash\mathbb Z$},\\[2mm]
+(2\beta)^{2s}, & |a|=M.
+\end{cases}
+\end{gathered}
+\end{equation}
+\end{proposition}
+
+%\begin{remark}[Definition of the radial Teukolsky--Starobinsky constant]\label{rem:radial-ts-constant}
+%Assume that $R^{[\pm s]}$ are outgoing solutions of the homogeneous radial ODE, i.e.\ $a^{[\pm s]}_{\cH-}=a^{[\pm s]}_{\cI-}=0$ in \eqref{eq:radial-representation}. Then, \eqref{eq:TS-identities} provide an alternative definition of the radial Teukolsky--Starobinsky constant from Proposition 2.10 as
+%\begin{equation}\label{eq:Cs-def}
+%        \mathfrak C_s:=\mathfrak C^{(1)}_s\mathfrak C^{(3)}_s
+%        =\mathfrak C^{(2)}_s\mathfrak C^{(4)}_s.
+%\end{equation}
+%If $R^{[\pm s]}$ are not outgoing, we consider the radial Teukolsky--Starobinsky constant as defined in Proposition 2.10 and conclude
+%\begin{equation*}
+%        \mathfrak C^{(1)}_s\mathfrak C^{(3)}_s
+%        =\mathfrak C^{(2)}_s\mathfrak C^{(4)}_s
+%        =\mathfrak C^{(5)}_s\mathfrak C^{(7)}_s
+%        =\mathfrak C^{(6)}_s\mathfrak C^{(8)}_s
+%        =\mathfrak C_s.
+%\end{equation*}
+%Having defined the radial Teukolsky--Starobinsky constant, we can write \eqref{eq:TS-identities} in terms of this constant and the $\mathfrak C^{(i)}_s$ for which we have simple formulas in terms of the frequency parameters:
+%\begin{align}
+%\Delta^s(D^+_0)^{2s}\left(\Delta^sR^{[+s]}\right)
+%&=\mathfrak C^{(1)}_s a^{[+s]}_{\cI+}R^{[-s]}_{\cI+}
+%  +\mathfrak C_s\left(\mathfrak C^{(5)}_s\right)^{-1}a^{[+s]}_{\cI-}R^{[-s]}_{\cI-} \notag\\
+%&=\mathfrak C_s\left(\mathfrak C^{(2)}_s\right)^{-1}a^{[+s]}_{\cH+}R^{[-s]}_{\cH+}
+%  +\mathfrak C^{(6)}_s a^{[+s]}_{\cH-}R^{[-s]}_{\cH-},
+%\notag\\[2mm]
+%\Delta^s(D^-_0)^{2s}R^{[-s]}
+%&=\mathfrak C_s\left(\mathfrak C^{(1)}_s\right)^{-1}a^{[-s]}_{\cI+}\Delta^sR^{[+s]}_{\cI+}
+%  +\mathfrak C^{(5)}_s a^{[-s]}_{\cI-}\Delta^sR^{[+s]}_{\cI-} \notag\\
+%&=\mathfrak C^{(2)}_s a^{[-s]}_{\cH+}\Delta^sR^{[+s]}_{\cH+}
+%  +\mathfrak C_s\left(\mathfrak C^{(6)}_s\right)^{-1}a^{[-s]}_{\cH-}\Delta^sR^{[+s]}_{\cH-}.
+%\label{eq:TS-identities-C}
+%\end{align}
+%\end{remark}
+
+In order to prove Proposition \ref{prop:radial-ts}, we recall the following two results from [KMW89]:
+
+\begin{lemma}\label{lem:P-ode} For solutions of the homogeneous radial ODE~\eqref{eq:radial-ode} with spin $\pm s$, we set
+\begin{align*}
+P^{[+ s]}:=\Delta^s R^{[+s]}, \quad P^{[-s]}:=R^{[-s]}.
+\end{align*}
+Then, we have
+\begin{equation}\label{eq:P-ode}
+\left[\Delta D^{\mp}_{1-s}D^{\pm}_0\pm2(2s-1)\ii\omega r\right]P^{[\pm s]}(r)
+ =\left(\lambda+|s|+a^2\omega^2-2am\omega\right)P^{[\pm s]}(r).
+\end{equation}
+\end{lemma}
+
+By induction on $2s$, one can also show that:
+
+\begin{lemma}\label{lem:radial-commutation}
+The operators $D^{\pm}_0$, defined in \eqref{eq:Dpm}, satisfy the commutation relation
+\begin{align}\label{eq:radial-commutation}
+&\Delta^s(D^{\mp}_0)^{2s}
+\left[\Delta D^{\pm}_{1-s}D^{\mp}_0\mp2(2s-1)\ii\omega r\right]
+\notag\\
+&\hspace{35mm}=
+\left[\Delta D^{\mp}_{1-s}D^{\pm}_0\pm2(2s-1)\ii\omega r\right]
+\Delta^s(D^{\mp}_0)^{2s}.
+\end{align}
+\end{lemma}
+
+Combining the two lemmas, we see that, if $P^{[\pm s]}$ solves \eqref{eq:P-ode} with spin $\pm$, then $\Delta^s(D^{\pm}_0)^{2s}P^{[\pm s]}$ is a solution of the homogeneous radial ODE \eqref{eq:P-ode} for spin $\mp s$. We are now ready to prove Proposition \ref{prop:radial-ts}:
+
+\begin{proof}[Proof of Proposition \ref{prop:radial-ts}]
+The statement is trivial for $s=0$. For $s\neq0$, we obtain the result by using the asymptotic representations of $R^{[\pm s]}_{\cH+}$, $R^{[\pm s]}_{\cI+}$, $R^{[\pm s]}_{\cH-}$ and $R^{[\pm s]}_{\cI-}$, on which we can act directly with the Teukolsky--Starobinsky operators. Since $\omega\neq 0$, these are
+\begin{align}
+\Delta^{\frac{s\pm s}{2}}R^{[\pm s]}_{\cI+}
+&=e^{\ii\omega r}r^{2\ii M\omega+s\mp s-1}
+\left[\sum_{k=0}^{2s}c^{[\pm s]}_kr^{-k}+O(r^{-2s-1})\right],
+\notag\\
+\Delta^{\frac{s\pm s}{2}}R^{[\pm s]}_{\cI-}
+&=e^{-\ii\omega r}r^{-2\ii M\omega+s\pm s-1}
+\left[\sum_{k=0}^{2s}c^{[\pm s]}_{k,2}r^{-k}+O(r^{-2s-1})\right],
+\label{eq:asymptotic-representations-infty}
+\end{align}
+as $r\to \infty$; if $\omega\neq m\omega_+$,
+\begin{align}
+\Delta^{\frac{s\pm s}{2}}R^{[\pm s]}_{\cH+}
+&=
+\begin{cases}
+\displaystyle (r-r_-)^{\frac{s\pm s}{2}}\sum_{k=0}^{\infty}b^{[\pm s]}_k(r-r_+)^{\xi+(s\mp s)/2+k}, & |a|<M,\\[2mm]
+\displaystyle \sum_{k=0}^{\infty}b^{[\pm s]}_ke^{\beta(r-M)^{-1}}(r-M)^{-2\ii M\omega+s\mp s+k}, & |a|=M,
+\end{cases}
+\notag\\
+\Delta^{\frac{s\pm s}{2}}R^{[\pm s]}_{\cH-}
+&=
+\begin{cases}
+\displaystyle (r-r_-)^{\frac{s\pm s}{2}}\sum_{k=0}^{\infty}b^{[\pm s]}_{k,2}(r-r_+)^{-\xi+(s\pm s)/2+k}, & |a|<M,\\[2mm]
+\displaystyle \sum_{k=0}^{\infty}b^{[\pm s]}_{k,2}e^{-\beta(r-M)^{-1}}(r-M)^{2\ii M\omega+s\pm s+k}, & |a|=M,
+\end{cases}
+\label{eq:asymptotic-representations-hor1}
+\end{align}
+as $r\to r_+$; 
+and, if $\omega=m\omega_+$,
+\begin{align}
+\Delta^{\frac{s\pm s}{2}}R^{[\pm s]}_{\cH+}
+&= (r-r_-)^{\frac{s\pm s}{2}}\sum_{k=0}^{\infty}b^{[\pm s]}_k(r-r_+)^{\xi+ (s\mp s)/2+k}, & |a|<M, \, s\in\frac12\mathbb Z_{\geq 0}\backslash \mathbb Z \\
+R^{[- s]}_{\cH+}
+&= \sum_{k=0}^{\infty}b^{[- s]}_k(r-r_+)^{\xi+ s+k}, & |a|<M,\, s\in \mathbb Z_{\geq 0},\\
+\Delta^s R^{[+s]}_{\cH+}
+&=
+\displaystyle (r-r_-)^s\sum_{k=0}^{\infty}b^{[+s]}_k(r-r_+)^{\xi+s+k}, & |a|<M, \, s\in \mathbb Z_{\geq 0},
+\label{eq:asymptotic-representations-hor2}
+\end{align}
+as $r\to r_+$.
+ By the normalizations, $c^{[\pm s]}_0=c^{[\pm s]}_{0,2}=b^{[\pm s]}_0=b^{[\pm s]}_{0,2}=1$.
+
+For computations at $r=r_+$, it will be useful to recall from the definition of $\xi$ and $\beta$ in \eqref{eq:xi-beta},
+\begin{align}
+\xi(r-r_-)+\ii\omega(r^2+a^2)-\ii am
+&=\xi(r_+-r_-)+\ii\omega(r_+^2+a^2)-\ii am
+\notag\\
+&\quad+\xi(r-r_+)+\ii\omega(r-r_+)(r+r_+)
+\notag\\
+&=\xi(r-r_+)+\ii\omega(r-r_+)(r+r_+),
+\label{eq:xi-identity}\\
+\beta+\ii\omega(r-M)(r+M)&=\ii\omega(r^2+M^2)-\ii am.
+\label{eq:beta-identity}
+\end{align}
+
+\emph{The cases $R^{[+s]}_{\cI+}$ and $R^{[-s]}_{\cH+}$.} In these cases, the constant arising from application of the Teukolsky--Starobinsky operators to these functions involves only the first term of the series.
+
+We begin at $r\to\infty$, with positive spin. For any $s\geq\frac12$, we will have
+\begin{align*}
+D^+_0\left(\Delta^s R^{[+s]}_{\cI+}\right)
+&=\left(\frac{\dd}{\dd r}+\ii\frac{\omega(r^2+a^2)-am}{\Delta}\right)
+        \left(\Delta^sR^{[+s]}_{\cI+}\right)\\
+&=e^{\ii\omega r}r^{2\ii M\omega-1}
+\left[\sum_{k=0}^{2s}c^{[+s]}_k
+\left(2\ii\omega-\frac{k+1-2\ii M\omega}{r}
+      +\frac{2M\ii\omega r-\ii am}{\Delta}\right)r^{-k}
+      +O(r^{-2s-1})\right].
+\end{align*}
+Repeating $2s-1$ times, we obtain
+\begin{equation}\label{eq:Iplus-easy}
+\Delta^s(D^+_0)^{2s}\left(\Delta^sR^{[+s]}_{\cI+}\right)
+=e^{\ii\omega r}r^{2\ii M\omega+2s-1}
+\left[\sum_{k=0}^{2s}c^{[+s]}_k\left((2\ii\omega)^{2s}+O(r^{-1})\right)r^{-k}+O(r^{-2s-1})\right].
+\end{equation}
+By Lemma \ref{lem:radial-commutation}, \eqref{eq:Iplus-easy} satisfies the spin $-s$ radial ODE, hence, by Definition \ref{def:radial-basis}, we conclude
+\begin{equation*}
+\Delta^s(D^+_0)^{2s}\left(\Delta^sR^{[+s]}_{\cI+}\right)=\mathfrak C^{(1)}_sR^{[-s]}_{\cI+},
+\qquad
+\mathfrak C^{(1)}_s:=(2\ii\omega)^{2s}.
+\end{equation*}
+
+We now turn to $r=r_+$, and consider solutions with spin $-s$. We start with $|a|<M$; for any $s\neq 0$, using \eqref{eq:xi-identity}, we obtain
+\begin{align}
+D^-_0R^{[-s]}_{\cH+}
+&=\left(\frac{\dd}{\dd r}-\ii\frac{\omega(r^2+a^2)}{\Delta}+\frac{\ii am}{\Delta}\right)R^{[-s]}\notag\\
+&=\sum_{k=0}^{\infty}b^{[-s]}_k
+\left((\xi+k+s)-\frac{\ii\omega(r^2+a^2)}{r-r_-}+\frac{\ii am}{r-r_-}\right)(r-r_+)^{\xi+k+s-1}\notag\\
+&=\sum_{k=0}^{\infty}b^{[-s]}_k
+\left((2\xi+k+s)-\frac{(\xi+\ii\omega(r+r_+))(r-r_+)}{r-r_-}\right)(r-r_+)^{\xi+k+s-1}. \label{eq:Hplus-easy-subextremal-int}
+\end{align}
+If $s\in\mathbb Z_{\geq 0}$, repeating the procedure $s-1$ more times yields 
+\begin{equation*}
+(D^-_0)^{s}R^{[-s]}_{\cH+}
+=\sum_{k=0}^{\infty}b^{[-s]}_k
+\left[\prod_{j=0}^{s-1}(2\xi+k+s-j)+O(r-r_+)\right]
+(r-r_+)^{\xi+k},
+\end{equation*}
+which is clearly regular at $r=r_+$ if $\omega=m\omega_+$; this regularity is preserved by acting with a further factor of $(D^-_0)^{s}$: 
+\begin{equation*}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cH+}
+=\Delta^s\left[s! f_-(b_0^{[-s]},\dots, b_s^{[-s]}, \omega=m\omega_+, a , M)+O(r-r_+)\right],\label{eq:Hplus-easy-subextremal1}
+\end{equation*}
+for some function $f_-$ which is independent of $r$. 
+If, on the other hand, $s\in\frac12\mathbb Z_{\geq 0}\backslash\mathbb Z$ or if $\omega\neq m\omega_+$, repeating the procedure of \eqref{eq:Hplus-easy-subextremal-int} $2s-1$ more times yields
+\begin{equation}\label{eq:Hplus-easy-subextremal2}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cH+}
+=\sum_{k=0}^{\infty}b^{[-s]}_k
+\left[\prod_{j=0}^{2s-1}(2\xi+k+s-j)+O(r-r_+)\right]
+\Delta^s(r-r_+)^{\xi+k-s}.
+\end{equation}
+Finally, if $|a|=M$, then for any $s\neq 0$ and $\omega\neq m\omega_+$, using \eqref{eq:beta-identity}, we obtain
+\begin{align*}
+D^-_0R^{[-s]}_{\cH+}
+&=\left(\frac{\dd}{\dd r}-\ii\omega\frac{r^2+M^2}{(r-M)^2}+\frac{\ii am}{(r-M)^2}\right)R^{[-s]}\\
+&=\left(\frac{\dd}{\dd r}-\frac{\beta}{(r-M)^2}-\frac{(r+M)\ii\omega}{r-M}\right)
+   e^{\beta(r-M)^{-1}}\sum_{k=0}^{\infty}b^{[-s]}_k(r-M)^{-2\ii M\omega+2s+k}\\
+&=\left[-2\beta+O(r-M)\right]e^{\beta(r-M)^{-1}}
+   \sum_{k=0}^{\infty}b^{[-s]}_k(r-M)^{-2\ii M\omega+2s-2+k},
+\end{align*}
+which, repeating $2s-1$ times, yields
+\begin{equation}\label{eq:Hplus-easy-extremal}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cH+}
+=\sum_{k=0}^{\infty}b^{[-s]}_k\left[(-2\beta)^{2s}+O(r-M)\right]
+ e^{\beta(r-M)^{-1}}(r-M)^{-2\ii M\omega+k}.
+\end{equation}
+By Lemma \ref{lem:radial-commutation}, $\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cH+}$ satisfies the homogeneous spin $+s$ radial ODE \eqref{eq:P-ode}, hence, by Definition \ref{def:radial-basis}, we conclude that
+\begin{equation*}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cH+}=\mathfrak C^{(2)}_s\Delta^sR^{[+s]}_{\cH+},
+\end{equation*}
+where we have set
+\begin{gather*}
+\mathfrak C^{(2)}_s:=
+\begin{dcases}
+\prod_{j=0}^{2s-1}(2\xi+s-j)\quad&\text{if $|a|<M$ and either $\omega\neq m\omega_+$ or $s\in\frac12\mathbb Z_{\geq 0}\backslash\mathbb Z$}, \\
+s! f_-(b_0^{[-s]},\dots, b_s^{[-s]}, \omega, a , M),&\text{if $|a|<M$, $\omega=m\omega_+$ and $s\in\mathbb Z_{\geq 0}$},\\ 
+(-2\beta)^{2s}\quad&\text{if }|a|=M.
+\end{dcases}
+\end{gather*}
+
+\emph{The cases $R^{[+s]}_{\cH+}$ and $R^{[-s]}_{\cI+}$.} We need to take the same series-based approach as in the previous case. As we will see, for $R^{[+s]}_{\cH+}$ and $R^{[-s]}_{\cI+}$, the constant arising from application of the Teukolsky--Starobinsky operators to the series for these functions is more complicated to compute, as it involves up to $2s$ terms of their series expansion.
+
+We begin with spin $-s$ at $r=\infty$. For any $s\geq\frac12$, we have
+\begin{align}
+D^-_0R^{[-s]}_{\cI+}
+&=\left(\frac{\dd}{\dd r}-\ii\frac{\omega(r^2+a^2)}{\Delta}+\frac{\ii am}{\Delta}\right)
+\left[e^{\ii\omega r}r^{2\ii M\omega+2s-1}
+\sum_{k=0}^{2s}c^{[-s]}_kr^{-k}+O(r^{-2s-1})\right]
+\notag\\
+&=e^{\ii\omega r}r^{2\ii M\omega+2s-1}
+\left[
+\sum_{k=0}^{2s}c^{[-s]}_k\left(\frac{2\ii M\omega (a^2-2M r)}{r\Delta}+\frac{\ii am}{\Delta}+\frac{2s-1-k}{r}\right)r^{-k}\right].
+\label{eq:Dminus-Iplus}
+\end{align}
+The key difficulty, which is not present in the case of spin $+s$, is the cancellation that occurs between the $\omega$ dependence of $D^-_0$ and that of the leading order behavior of $R^{[-s]}_{\cI+}$. For instance, if $s=\frac12$, then
+\begin{equation*}
+D^-_0R^{[-1/2]}_{\cI+}
+=\left[(-4\ii M^2\omega+\ii am)c^{[-1/2]}_0-c^{[-1/2]}_1+O(r^{-1})\right]
+ e^{\ii\omega r}r^{2\ii M\omega-2},
+\end{equation*}
+so taking $D^-_0$ lowers the leading order behavior by a factor of $r^{-2}$. Indeed, an application of $(D^-_0)^{2s}$ lowers the leading order polynomial decay of $R^{[-s]}_{\cI+}$ by a factor of $r^{-4s}$ and the coefficient of the leading order term on the right hand side depends on coefficients $c^{[-s]}_0,\dots,c^{[-s]}_{2s}$ of the asymptotic expansion for $R^{[-s]}_{\cI+}$:
+\begin{equation}\label{eq:C3-asymptotic}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cI+}
+=\Delta^s e^{\ii\omega r}r^{2\ii M\omega-2s-1}
+\left[f_+\left(c^{[-s]}_0,\dots,c^{[-s]}_{2s},\omega,m,a, M\right)+O(r^{-1})\right],
+\end{equation}
+where $f_+$ is independent of $r$. By standard theory of asymptotic analysis, $c^{[-s]}_1,\dots,c^{[-s]}_{2s}$ are uniquely determined by $c^{[-s]}_0$ and the ODE parameters $(\omega,m,\lambda,s,a, M)$, so we can define
+\begin{equation*}
+\mathfrak C^{(3)}_s(\omega,m,\lambda,s,a, M):=
+\frac{f_+\left(c^{[-s]}_0,\dots,c^{[-s]}_{2s},\omega,m,a, M\right)}{c^{[-s]}_0}.
+\end{equation*}
+By Lemma \ref{lem:radial-commutation}, \eqref{eq:C3-asymptotic} satisfies the spin $+s$ radial ODE. As before, by Definition \ref{def:radial-basis}, we conclude
+\begin{equation*}
+\Delta^s(D^-_0)^{2s}R^{[-s]}_{\cI+}=\mathfrak C^{(3)}_s\Delta^sR^{[+s]}_{\cI+}.
+\end{equation*}
+
+Now consider spin $+s$ near $r=r_+$, and recall \eqref{eq:xi-identity} and \eqref{eq:beta-identity}. If $|a|<M$, and $\omega\neq m\omega_+$ or $s\in\frac12\mathbb Z_{\geq 0}\backslash\mathbb Z$, then
+\begin{align*}
+D^+_0\left(\Delta^sR^{[+s]}_{\cH+}\right)
+&=\left(\frac{\dd}{\dd r}+\frac{\ii\omega(r+r_+)}{r-r_-}-\frac{\xi}{r-r_+}+\frac{\xi}{r-r_-}\right)
+\sum_{k=0}^{\infty}b^{[+s]}_k(r-r_+)^{\xi+k}(r-r_-)^s\\
+&=\sum_{k=0}^{\infty}b^{[+s]}_k
+\left(\frac{k}{r-r_+}+\frac{\xi+s+\ii\omega(r+r_+)}{r-r_-}\right)
+(r-r_+)^{\xi+k}(r-r_-)^s,
+\end{align*}
+and if $|a|=M$,
+\begin{align*}
+D^+_0\left(\Delta^sR^{[+s]}_{\cH+}\right)
+&=\left(\frac{\dd}{\dd r}+\frac{\beta}{(r-M)^2}+\frac{2M\ii\omega}{r-M}+\ii\omega\right)
+\sum_{k=0}^{\infty}b^{[+s]}_ke^{\beta(r-M)^{-1}}(r-M)^{-2\ii M\omega+k}\\
+&=\sum_{k=0}^{\infty}b^{[+s]}_k\left(\frac{k}{r-M}+\ii\omega\right)
+ e^{\beta(r-M)^{-1}}(r-M)^{-2\ii M\omega+k}.
+\end{align*}
+As in the previous case, there is cancellation between the $\xi$ or $\beta$ dependence of the Teukolsky--Starobinsky operators and that of the leading order behavior of $\Delta^sR^{[+s]}_{\cH+}$. Proceeding as above, we note that application of $(D^+_0)^{2s}$ does not change the leading order polynomial decay of $\Delta^s R^{[+s]}_{\cH+}$ as $r\to r_+$ if $\omega\neq m\omega_+$ or, in case $|a|<M$, if $s\in\frac12\mathbb Z\backslash \mathbb Z$, but makes the coefficient of the resulting leading order term depend on coefficients $b^{[+s]}_0,\dots,b^{[+s]}_{2s}$ of the asymptotic series for $R^{[+s]}_{\cH+}$. In the case $|a|<M$, $s\in\mathbb Z$ and $\omega=m\omega_+$, we have
+\begin{align*}
+D^+_0\left(\Delta^sR^{[+s]}_{\cH+}\right)
+&=\left(\frac{\dd}{\dd r}+\frac{\ii\omega(r+r_+)}{r-r_-}\right)
+\sum_{k=0}^{\infty}b^{[+s]}_k(r-r_+)^{k}(r-r_-)^s\\
+&=\sum_{k=0}^{\infty}b^{[+s]}_k\left[s+k+O(r-r_+)\right](r-r_+)^{\xi+s+k-1}(r-r_-)^s\\
+\implies (D^+_0)^s\left(\Delta^sR^{[+s]}_{\cH+}\right)
+&=\sum_{k=0}^{\infty}b^{[+s]}_k\left[\prod_{j=0}^{s-1}(s+k-j)+O(r-r_+)\right](r-r_+)^{k}(r-r_-)^s\\
+\implies \Delta^s (D^+_0)^{2s}\left(\Delta^sR^{[+s]}_{\cH+}\right)
+&=\left[s! g_-(b_0^{[-s]},\dots, b_s^{[-s]}, \omega=m\omega_+, a , M)+O(r-r_+)\right](r-r_+)^s,
+\end{align*}
+for some function $g_-$ which is independent of $r$. Thus, we again appeal to theory of asymptotic analysis to define $\mathfrak C^{(4)}_s(\omega,m,\lambda,s,a,M)$ such that
+\begin{equation*}
+\Delta^s(D^+_0)^{2s}\left(\Delta^sR^{[+s]}_{\cH+}\right)
+=\mathfrak C^{(4)}_sR^{[-s]}_{\cH+}.
+\end{equation*}
+
+\emph{The cases $R^{[\pm s]}_{\cH-}$ and $R^{[\pm s]}_{\cI-}$.} Finally by direct inspection of \eqref{eq:asymptotic-representations-infty}--\eqref{eq:asymptotic-representations-hor2}, for $R^{[\pm s]}_{\cH-}$ and $R^{[\pm s]}_{\cI-}$, we can easily obtain the Teukolsky--Starobinsky identities by analogy with $R^{[\mp s]}_{\cH+}$ and $R^{[\mp s]}_{\cI+}$, respectively.
+\end{proof}
+
+
+\subsection{The angular case}
+
+\subsubsection{The angular ODE and its solutions}
+
+Fix parameters $s\in \frac12\Z_{\geq0}$, $m-s\in\Z$, $\nu\in\R$ and $\lambda\in\R$.
+
+In this section, we discuss the angular ODE
+\begin{equation}\label{eq:angular-ode}
+-\frac{1}{\sin\theta}\frac{d}{d\theta}\left(\sin\theta\frac{d}{d\theta}\right)\Xi^{[s]}
++\left(\frac{(m+ s\cos\theta)^2}{\sin^2\theta}
++\nu^2\sin^2\theta+2\nu s\cos\theta\right)\Xi^{[s]}
+=(\lambda+\nu^2)\Xi^{[s]},
+\end{equation}
+where $\theta\in(0,\pi)$. It will be convenient to sometimes use the variable $x=\cos\theta$, so that \eqref{eq:angular-ode} is considered for $x\in(-1,1)$.
+
+The ODE has regular singularities at $\theta=0,\pi$ ($x=\pm 1$), and an irregular singularity at $\theta=\infty$. By standard asymptotic analysis, we can span the solution space by two linearly independent asymptotic solutions at each of the singularities $\theta=0,\pi$. Our basis is given by the following:
+
+\begin{definition}\label{def:angular-basis}
+Fix $s,m\in \frac12\mathbb Z$ with $m-s\in \mathbb Z$, and $(\lambda,\nu)\in\mathbb R^2$.
+\begin{enumerate}[label=\arabic*.]
+\item Define $\Xi^{[s]}_{\cN^+}$ to be the unique classical solution to the angular ODE \eqref{eq:angular-ode} such that 
+\begin{enumerate}[label=\roman*.]
+\item $\Xi^{[s]}_{\cN^+}(\theta)(1-\cos\theta)^{-\frac12|m+s|}$ is smooth at $\theta=0$,
+\item $\left((1-\cos\theta)^{-\frac12|m+s|}\Xi^{[s]}_{\cN^+}\right)\big|_{\theta=0}=1$.
+\end{enumerate}
+\item Define $\Xi^{[s]}_{\cS^+}$ to be the unique classical solution to the angular ODE \eqref{eq:angular-ode} such that 
+\begin{enumerate}[label=\roman*.]
+\item $\Xi^{[s]}_{\cS^+}(\theta)(1+\cos\theta)^{-\frac12|m-s|}$ is smooth at $\theta=\pi$,
+\item $\left((1+\cos\theta)^{-\frac12|m-s|}\Xi^{[s]}_{\cS^+}\right)\big|_{\theta=\pi}=1$.
+\end{enumerate}
+\end{enumerate}
+\end{definition}
+
+In light of the previous comments, we find that we have the following representation for solutions of \eqref{eq:angular-ode}:
+
+\begin{lemma}\label{lem:angular-representation}
+ [TO FILL]
+\end{lemma}
+
+\subsubsection{The angular Teukolsky--Starobinsky identities}
+
+In this section, we will introduce the Teukolsky--Starobinsky identities.  We begin by defining the differential operators
+\begin{equation}\label{eq:Lpm}
+        L^{\pm}_n=\frac{\dd}{\dd\theta}\pm\left(\frac{m}{\sin\theta}-\nu\sin\theta\right)+n\cot\theta.
+\end{equation}
+
+The angular Teukolsky--Starobinsky identities are differential identities that relate solutions of the  angular ODE \eqref{eq:angular-ode} with spin $+s$ and spin $-s$, and were introduced in [TP74, SC74] and extended for general $s$ in [KMW89]. We will present a rigorous statement:
+
+\begin{proposition}[Angular Teukolsky--Starobinsky identities]\label{prop:angular-ts} Fix $s\in \frac12\mathbb Z_{\geq0}$, $m-s\in\mathbb Z$ and $(\lambda,\nu)\in \mathbb R^2$. Consider regular solutions to the angular ODE \eqref{eq:angular-ode}, i.e.\ solutions that admit a representation
+\begin{align*}
+\Xi^{[\pm s]}&=a^{[\pm s]}_{\cN^+}\Xi^{[\pm s]}_{\cN^+}\\
+&=a^{[\pm s]}_{\cS^+}\Xi^{[\pm s]}_{\cS^+},
+\end{align*}
+for some complex constants $a_{\cN^+}^{[\pm s]}$, $a_{\cS^+}^{[\pm s]}$. Then we have
+\begin{align}
+(\sin\theta)^{2s}\left(\frac{L^{+}_s}{\sin\theta}\right)^{2s}\Xi^{[+s]}
+&=\mathfrak B^{(1)}_s a^{[+s]}_{\cN^+}\Xi^{[-s]}_{\cN^+} \notag\\
+&=\mathfrak B^{(4)}_sa^{[+s]}_{\cS^+}\Xi^{[-s]}_{\cS^+},
+\notag\\[2mm]
+(\sin\theta)^{2s}\left(\frac{L^{-}_s}{\sin\theta}\right)^{2s}\Xi^{[-s]}
+&=\mathfrak B^{(3)}_s a^{[-s]}_{\cN^+}\Xi^{[+s]}_{\cN^+}
+\notag\\
+&=\mathfrak B^{(2)}_sa^{[-s]}_{\cS^+}\Xi^{[+s]}_{\cS^+},
+\label{eq:angular-TS-identities}
+\end{align}
+for some $\mathfrak B^{(i)}_s\in\mathbb C\backslash\{0\}$, $i=1,\dots,4$, which depend only on $s$, $m$ and $(\lambda,\nu)$ and such that $\mathfrak B^{(i)}_0=1$ for $s=0$ and, for $s\neq 0$,
+\begin{align*}
+ \mathfrak B^{(1)}_s&=\dots,\\
+ \mathfrak B^{(2)}_s&=(-1)^{2s} \mathfrak B^{(1)}_s,\\
+ \mathfrak B^{(3)}_s&=\dots,\\
+ \mathfrak B^{(4)}_s&=(-1)^{2s} \mathfrak B^{(3)}_s.
+\end{align*}
+\end{proposition}
+
+In order to prove Proposition \ref{prop:angular-ts}, we recall the following two results from [KMW89]:
+
+\begin{lemma}\label{lem:angular-ode-L} For solutions of the angular ODE~\eqref{eq:angular-ode} with spin $\pm s$,  we have
+\begin{equation}\label{eq:angular-ode-L}
+\left[L^{\mp}_{1-s}L^{\pm}_s\mp2(2s-1)\nu\cos\theta\right]\Xi^{[\pm s]}=-(\lambda+\nu^2-2m\nu+|s|)\Xi^{[\pm s]}
+\end{equation}
+\end{lemma}
+
+By induction on $2s$, one can also show that:
+
+\begin{lemma}\label{lem:angular-commutation}
+The operators $L^{\pm}_s$, defined in \eqref{eq:Lpm}, satisfy the commutation relation
+%\begin{align}\label{eq:angular-commutation}
+%&(\sin\theta)^s\left(\frac{L^{\mp}_s}{\sin\theta}\right)^{2s}
+%\left[ L^{\pm}_{1-s}L^{\mp}_s\pm2(2s-1)\nu\cos\theta\right]
+%\notag\\
+%&\hspace{35mm}=
+%\left[L^{\mp}_{1-s}L^{\pm}_s\mp2(2s-1)\nu\cos\theta\right]
+%(\sin\theta)^s\left(\frac{L^{\mp}_s}{\sin\theta}\right)^{2s}.
+%\end{align}
+\begin{align}\label{eq:angular-commutation}
+&(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s}
+\left[ L^{\mp}_{1-s}L^{\pm}_s\mp2(2s-1)\nu\cos\theta\right]
+\notag\\
+&\hspace{35mm}=
+\left[L^{\pm}_{1-s}L^{\mp}_s\pm2(2s-1)\nu\cos\theta\right]
+(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s}.
+\end{align}
+\end{lemma}
+
+Combining the two lemmas, we see that, if  $\Xi^{[\pm s]}$ solves \eqref{eq:angular-ode-L} for spin $\pm s$, then $(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s}\Xi^{[\pm s]}$ is a solution to the angular ODE \eqref{eq:angular-ode-L} with spin $\mp s$. We are now ready to prove Proposition \ref{prop:angular-ts}:
+
+\begin{proof}[Proof of Proposition \ref{prop:angular-ts}]
+The statement is trivial for $s=0$. For $s\neq 0$, we obtain the result by using the asymptotic representations of $\Xi_{\cN^+}$ and $\Xi_{\cS^+}$: with respect to the variable $x=\cos\theta$,
+\begin{align*}
+\Xi^{[\pm s]}_{\cN^+}&=\sum_{k=0}^\infty b_k^{[\pm s]}(1-x)^{\frac12|m\pm s|+k},\qquad 
+\Xi^{[\pm s]}_{\cS^+}=\sum_{k=0}^\infty c_k^{[\pm s]}(1+x)^{\frac12|m\mp s|+k},
+\end{align*}
+on which we can act directly with the Teukolsky--Starobinsky operators. By the normalizations, $c_0^{[\pm s]}=b_0^{[\pm s]}=1$. Note also that 
+\begin{align}
+\frac{L^{\pm}_s}{\sin\theta}=-\frac{d}{dx}+\frac{sx\pm m}{1-x^2}\mp \nu= -\frac{d}{dx}+\frac{s\pm m}{2(1-x)}-\frac{s\mp m}{2(1+x)}\mp \nu. \label{eq:angular-TS-op-rewritten}
+\end{align}
+
+\medskip
+\noindent \textit{The $\theta=0$ end.}
+We begin by computing the effect of applying the Teukolsky--Starobinsky operators to $\Xi^{[\pm s]}_{\cN^+}$. In doing so, it will be useful to note that, from \eqref{eq:angular-TS-op-rewritten},
+\begin{align*}
+\left(\frac{L^{\pm}_s}{\sin\theta}\right)\left((1-x)^{-\frac{1}{2}(s\pm m)}\Xi\right) = (1-x)^{-\frac{1}{2}(s\pm m)}\left(-\frac{d}{dx}-\frac{s\mp m}{2(1+x)}\mp \nu\right)\Xi,
+\end{align*}
+for any function $\Xi(x)$. It follows immediately that, if $s\pm m\leq 0$, then
+\begin{align*}
+(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s} \Xi^{[\pm s]}_{\cN^+} 
+&=(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s} \left[(1-x)^{-\frac12(s\pm m)}\sum_{k=0}^\infty b_k^{[\pm s]}(1-x)^{k}\right]\\
+&=
+(1+x)^{s}(1-x)^{\frac12|-s\pm m|}\left(-\frac{d}{dx}-\frac{s\mp m}{2(1+x)}\mp \nu\right)^{2s} \sum_{k=0}^\infty b_k^{[\pm s]}(1-x)^{k}.
+\end{align*} 
+Combining Lemmas~\ref{lem:angular-commutation}, \ref{lem:angular-ode-L} and Definition~\ref{def:angular-basis}, we deduce that $(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s} \Xi^{[\pm s]}_{\cN^+} $ is a solution to the $\mp s$ angular ODE with no irregular behavior at $\theta= 0$. Thus, there are functions $f_\pm$ so that
+\begin{gather*}
+s+ m \leq 0\implies \mathfrak B_s^{(1)}= 2^{s}\left((2s)!b_{2s}^{[+s]}+f_+(b_0^{[+s]}, \dots, b_{2s-1}^{[+s]})\right), \\ s- m \leq 0\implies \mathfrak B_s^{(3)}=2^{s}\left((2s)!b_{2s}^{[-s]}+f_-(b_0^{[-s]}, \dots, b_{2s-1}^{[-s]})\right).
+\end{gather*}
+
+If $s\pm m\geq 1$, then
+\begin{align*}
+\left(\frac{L^{\pm}_s}{\sin\theta}\right) \Xi^{[\pm s]}_{\cN^+} 
+&=\sum_{k=0}^\infty b_k^{[\pm s]}\left[k+s\pm m+O(1-x)\right](1-x)^{\frac12(s\pm m-2)+k}\\
+\implies \left(\frac{L^{\pm}_s}{\sin\theta}\right)^n \Xi^{[\pm s]}_{\cN^+} &=\sum_{k=0}^\infty b_k^{[\pm s]}\left[\prod_{j=0}^{n-1} (k+s\pm m-j)+O(1-x)\right](1-x)^{\frac12(s\pm m-2n)+k}.
+\end{align*}
+It follows that:
+\begin{itemize}
+\item if $s\pm m \geq 2s\geq 1$, then 
+\begin{align*}
+&(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s} \Xi^{[\pm s]}_{\cN^+}  \\
+%
+&\quad = (1-x^2)^{s}\sum_{k=0}^\infty b_k^{[\pm s]}\left[\prod_{j=0}^{2s-1} (k+s\pm m-j)+O(1-x)\right](1-x)^{\frac12(-s\pm m)-s+k} \\
+%
+&\quad = \sum_{k=0}^\infty b_k^{[\pm s]}\left[2^{s}\prod_{j=0}^{2s-1} (k+s\pm m-j)+O(1-x)\right](1-x)^{\frac12|-s\pm m|+k},
+\end{align*}
+so, combining Lemmas~\ref{lem:angular-commutation}, \ref{lem:angular-ode-L} and Definition~\ref{def:angular-basis}, we deduce
+\begin{align*}
+s+ m \geq 2s\geq 1\implies \mathfrak B_s^{(1)}= 2^{s}\prod_{j=0}^{2s-1} (s+ m-j), \\ s- m \geq 2s\geq 1 \implies \mathfrak B_s^{(3)}=2^{s}\prod_{j=0}^{2s-1} (s- m-j);
+\end{align*}
+\item otherwise, if $1\leq s\pm m \leq 2s-1$, then 
+\begin{align*}
+&(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{2s} \Xi^{[\pm s]}_{\cN^+} \\
+ &\quad =(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{s\mp m}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{s\pm m} \Xi^{[\pm s]}_{\cN^+}\\
+ &\quad =(\sin\theta)^{2s}\left(\frac{L^{\pm}_s}{\sin\theta}\right)^{s\mp m}\left[(1-x)^{-\frac12(s\pm m)}\sum_{k=0}^\infty b_k^{[\pm s]}\left[\frac{(k+s\pm m)!}{k!}+O(1-x)\right](1-x)^{k}\right]\\
+ &\quad =(1+x)^{s}(1-x)^{\frac12|-s\pm m|}\times\\
+ &\quad\qquad \times\left(-\frac{d}{dx}-\frac{s\mp m}{2(1+x)}\mp \nu\right)^{s\mp m}\left[\sum_{k=0}^\infty b_k^{[\pm s]}\left[\frac{(k+s\pm m)!}{k!}+O(1-x)\right](1-x)^{k}\right],
+\end{align*}
+\end{itemize}
+so, combining Lemmas~\ref{lem:angular-commutation}, \ref{lem:angular-ode-L} and Definition~\ref{def:angular-basis}, we deduce there are functions $g_\pm$ so that
+\begin{gather*}
+1\leq s+ m \leq 2s-1\implies \mathfrak B_s^{(1)}= 2^{s}(2s)!\left(b_{s- m}^{[+s]}+g_+(b_0^{[+s]}, \dots, b_{s- m-1}^{[+s]})\right), \\ 1\leq s- m \leq 2s-1 \implies \mathfrak B_s^{(3)}=2^{s}(2s)!\left(b_{s+ m}^{[-s]}+g_-(b_0^{[-s]}, \dots, b_{s+ m-1}^{[-s]})\right).
+\end{gather*}
+
+\medskip
+\noindent \textit{The $\theta=\pi$ end.} To compute $\mathfrak B_s^{(2)}$ and $\mathfrak B_s^{(4)}$, we can follow the same steps as before. Alternatively, we can  appeal to the symmetry of \eqref{eq:angular-ode} under $\theta\mapsto \pi-\theta$: $L^\pm_s\mapsto -L_s^\mp$  and $\Xi^{[\pm s]}_{\cS^+}(\theta)=\Xi^{[\mp s]}_{\cN^+}(\pi- \theta)$, so the claimed identities follow easily. 
+
+\medskip
+\noindent \textit{Non-vanishing of the constants.} Finally, we turn to the proof that $\mathfrak B_s^{(i)}$ are non-zero. In view of the relationships between then, it is enough to show  $\mathfrak B_s^{(1)}$ and $\mathfrak B_s^{(3)}$ are nonzero. Note that, from \eqref{eq:angular-TS-op-rewritten},
+\begin{align*}
+&\frac{L_s^\pm}{\sin\theta}\left(e^{\mp \nu x}(1-x)^{-\frac12(s\pm m)}(1+x)^{-\frac12(s\mp m)}\right)=0.
+\end{align*}
+Thus, if we write $\Xi^{[\pm s]} = e^{\mp \nu x}(1-x)^{-\frac12(s\pm m)}(1+x)^{-\frac12(s\mp m)}P^{[\pm s]}(x)$ for some $P^{[\pm s]}\colon (-1,1)\to \mathbb C$, we obtain 
+\begin{align*}
+\left(\frac{L_s^\pm}{\sin\theta}\right)^{2s}\Xi^{[\pm s]}=(-1)^{2s}e^{\mp \nu x}(1-x)^{-\frac12(s\pm m)}(1+x)^{-\frac12(s\mp m)}\frac{d^{2s}}{dx^{2s}}P_s^{[\pm s]}(x).
+\end{align*}
+
+We have established that so far that, if $\Xi^{[\pm s]}$ solves the angular ODE \eqref{eq:angular-ode} and is regular at $\theta=0,\pi$, then it satisfies the identities in the statement for some $\mathfrak B_s^{(1)}$ and $\mathfrak B_s^{(3)}$, respectively. From  the above, it follows that: if $\mathfrak B_s^{(1)}=0$, for regular solutions $\Xi^{[+s]}$, $P^{[+ s]}$ is a polynomial of degree at most $2s-1$; if $\mathfrak B_s^{(3)}=0$, for regular solutions $\Xi^{[-s]}$, then $P^{[- s]}$ must be a polynomial of degree at most $2s-1$. However, the regularity of $\Xi^{[\pm s]}$ forces $P^{[\pm s]}$ to have at least $2s$ zeros (counted with multiplity), so $\mathfrak B_s^{(i)}\neq 0$. Indeed:
+\begin{itemize}
+\item regularity at $\theta=0$ implies $P^{[\pm s]}$ must vanish to order at least $\frac12|s\pm m|+\frac12(s\pm m)=\max\{s\pm m,0\}$ at $x=1$;
+\item regularity at $\theta=\pi$ implies $P^{[\pm s]}$ must vanish to order at least $\frac12|s\mp m|+\frac12(s\mp m)=\max\{s\mp m,0\}$ at $x=-1$;
+\end{itemize} 
+and thus the polynomial $P^{[\pm s]}$ must have at least $\max\{s\pm m,0\}+\max\{s\mp m,0\}\geq 2s$ roots on the real line.
+\end{proof}
+
+
+
+
+\end{document}
